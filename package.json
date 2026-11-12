@@ -1,0 +1,23 @@
+{
+  "name": "arrival",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Arrival: agente de viagens com IA (Ari) que busca voos, hotéis, restaurantes e experiências reais via MCP.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "mcp:inspector": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^4.0.116",
+    "@ai-sdk/mcp": "^2.0.95",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "@supabase/supabase-js": "^2.119.0",
+    "ai": "^7.0.168",
+    "mcp-handler": "^2.3.1",
+    "zod": "^4.6.7"
+  }
+}

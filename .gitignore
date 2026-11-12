@@ -1,0 +1,13 @@
+# Chaves: nunca subir
+.env
+.env.*
+!.env.example
+
+# Dependências e Vercel
+node_modules/
+.vercel/
+
+# Sistema e editor
+.DS_Store
+Thumbs.db
+*.log
