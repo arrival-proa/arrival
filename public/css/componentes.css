@@ -1,0 +1,93 @@
+.menu-lateral{
+    background-color: var(--cor-secundaria);
+    width: 318px;
+    position: relative; 
+    flex-shrink: 0; 
+    overflow: hidden; 
+    border-radius: 0 22px 22px 0;
+    box-shadow: 2px 0 14px rgba(110, 90, 190, .08);
+    z-index: 2;
+    transition: width .55s var(--ease), border-radius .55s var(--ease);
+}
+
+.menu-lateral__topo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+.menu-lateral__topo button{
+    border-radius: 50%;
+    border: none;
+}
+
+.menu-lateral__acoes{
+    width: 100%;
+}
+
+.menu-lateral__acoes ul{
+    display:flex;
+    flex-direction: column;
+    gap: 1.1875rem;
+    background-color: var(--cor-secundaria);
+    padding: 0;
+    margin-bottom: 0.5rem;
+}
+
+.menu-lateral__acoes ul li{
+    box-shadow: 2px 0 12px #0C0A13;
+    border-radius: 999px;
+
+    height: 47px;
+    width: 274px;
+
+    overflow: hidden;
+    transition: background-color 0.2s; 
+}
+.menu-lateral__acoes ul li:hover{
+    background-color: #2b2451;
+}
+
+.menu-lateral__acoes ul li button,
+.menu-lateral__acoes ul li a {
+    width: 100%;
+    height: 100%;
+    padding: 0 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Alinhamento dos ícones e textos */
+
+.menu-lateral__acoes .ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.menu-lateral__acoes .ic svg{
+    width: 20px;
+    height: 20px;
+}
+
+.menu-lateral__acoes .label, .menu-lateral__acoes a span:not(i.ic), #label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+
+
+
+
+
+
+
+
+    
