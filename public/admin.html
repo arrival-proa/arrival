@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel do admin · Arrival</title>
+    <meta name="description" content="Números gerais de uso do Arrival, sem dados pessoais." />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <aside id="menu-lateral" class="menu-lateral" aria-label="Menu principal">
+      <div class="menu-lateral__topo">
+        <a href="index.html" class="menu-lateral__logo">
+          <img src="assets/img/logo-arrival.png" alt="Arrival, página inicial" width="160" height="42" />
+        </a>
+        <button
+          type="button"
+          class="menu-lateral__alternar"
+          aria-expanded="false"
+          aria-controls="menu-lateral"
+        >
+          Abrir ou fechar menu
+        </button>
+      </div>
+      <nav class="menu-lateral__acoes" aria-label="Ações">
+        <ul>
+          <li><a href="index.html">Novo chat</a></li>
+          <li><button type="button" id="botao-tema" aria-pressed="false">Aparência</button></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </nav>
+      <section class="menu-lateral__conversas" aria-labelledby="titulo-conversas">
+        <h2 id="titulo-conversas">Conversas recentes</h2>
+        <ul id="lista-conversas"></ul>
+      </section>
+      <footer class="menu-lateral__usuario">
+        <a href="perfil.html" class="usuario">
+          <span class="usuario__foto" aria-hidden="true"></span>
+          <span class="usuario__nome">Meu perfil</span>
+          <span class="usuario__plano"></span>
+        </a>
+        <button type="button" id="botao-sair">Sair</button>
+      </footer>
+    </aside>
+
+    <main id="conteudo" class="admin">
+      <a href="index.html" class="voltar">Voltar</a>
+
+      <header class="admin__topo">
+        <h1>Painel do admin</h1>
+        <p>
+          Números gerais do Arrival, sem dados pessoais. Atualizado em
+          <time id="admin-atualizado" datetime="2026-11-17T09:00">17/11/2026, 09:00</time>.
+        </p>
+      </header>
+
+      <section class="admin__secao" aria-labelledby="titulo-uso">
+        <h2 id="titulo-uso">Uso</h2>
+        <ul class="metricas">
+          <li class="metrica">
+            <span class="metrica__rotulo">Contas cadastradas</span>
+            <strong id="admin-contas" class="metrica__valor">0</strong>
+          </li>
+          <li class="metrica">
+            <span class="metrica__rotulo">Roteiros hoje</span>
+            <strong id="admin-roteiros-hoje" class="metrica__valor">0</strong>
+          </li>
+          <li class="metrica">
+            <span class="metrica__rotulo">Roteiros no mês</span>
+            <strong id="admin-roteiros-mes" class="metrica__valor">0</strong>
+          </li>
+          <li class="metrica">
+            <span class="metrica__rotulo">Contas por plano</span>
+            <strong class="metrica__valor">
+              <span id="admin-plano-essencial">0</span> Essencial · <span id="admin-plano-pro">0</span> Pro ·
+              <span id="admin-plano-crew">0</span> Crew
+            </strong>
+          </li>
+        </ul>
+      </section>
+
+      <section class="admin__secao" aria-labelledby="titulo-cotas">
+        <h2 id="titulo-cotas">Cotas das APIs</h2>
+        <ul class="metricas">
+          <li class="metrica metrica--cota">
+            <label for="cota-serpapi" class="metrica__rotulo">Buscas da SerpApi usadas no mês</label>
+            <meter id="cota-serpapi" min="0" max="250" low="175" high="225" optimum="0" value="0">
+              0 de 250
+            </meter>
+            <strong class="metrica__valor"
+              ><span id="admin-serpapi-usadas">0</span> de <span id="admin-serpapi-total">250</span></strong
+            >
+          </li>
+          <li class="metrica">
+            <span class="metrica__rotulo">Buscas feitas hoje</span>
+            <strong id="admin-buscas-hoje" class="metrica__valor">0</strong>
+          </li>
+        </ul>
+      </section>
+
+      <section class="admin__secao" aria-labelledby="titulo-funil">
+        <h2 id="titulo-funil">Funil das etapas</h2>
+        <p>Quantas conversas do mês chegaram a cada etapa.</p>
+        <ol class="funil">
+          <li class="funil__etapa"><span>Voos</span> <strong id="funil-voos">0</strong></li>
+          <li class="funil__etapa"><span>Hotéis</span> <strong id="funil-hoteis">0</strong></li>
+          <li class="funil__etapa"><span>Restaurantes</span> <strong id="funil-restaurantes">0</strong></li>
+          <li class="funil__etapa"><span>Experiências</span> <strong id="funil-experiencias">0</strong></li>
+          <li class="funil__etapa"><span>Roteiro gerado</span> <strong id="funil-roteiro">0</strong></li>
+        </ol>
+      </section>
+
+      <section class="admin__secao" aria-labelledby="titulo-saude">
+        <h2 id="titulo-saude">Saúde do sistema</h2>
+        <table class="tabela-erros">
+          <caption>
+            Erros mais recentes
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Quando</th>
+              <th scope="col">Origem</th>
+              <th scope="col">Mensagem</th>
+            </tr>
+          </thead>
+          <tbody id="admin-erros">
+            <tr>
+              <td colspan="3">Nenhum erro nas últimas 24 horas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/tema.js"></script>
+  </body>
+</html>
