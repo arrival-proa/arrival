@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arrival · Planeje sua viagem com a Ari</title>
+  <meta name="description" content="Converse com a Ari e monte sua viagem com voos, hospedagem, restaurantes e passeios dentro do seu orçamento.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+</head>
+<body>
+
+  <!-- MENU LATERAL
+       Desktop: fechado mostra só os ícones; aberto mostra logo, textos e conversas.
+       Celular: fica escondido e abre por cima da tela pelo botão de menu. -->
+  <aside id="menu-lateral" class="menu-lateral" aria-label="Menu principal">
+
+    <div class="menu-lateral__topo">
+      <a href="index.html" class="menu-lateral__logo">
+        <img src="assets/img/logo-arrival.png" alt="Arrival, página inicial" width="160" height="42">
+      </a>
+      <button type="button" class="menu-lateral__alternar" aria-expanded="true" aria-controls="menu-lateral">
+        Abrir ou fechar menu
+      </button>
+    </div>
+
+    <nav class="menu-lateral__acoes" aria-label="Ações">
+      <ul>
+        <li><button type="button" id="botao-novo-chat">Novo chat</button></li>
+        <li><button type="button" id="botao-tema" aria-pressed="false">Aparência</button></li>
+        <li><a href="historico.html">Histórico</a></li>
+      </ul>
+    </nav>
+
+    <!-- Últimas 10 conversas. O conversas.js preenche esta lista; os itens aqui são só  exemplos do wireframe. -->
+    <section class="menu-lateral__conversas" aria-labelledby="titulo-conversas">
+      <h2 id="titulo-conversas">Conversas recentes</h2>
+      <ul id="lista-conversas">
+        <li class="conversa">
+          <a href="index.html?conversa=1" class="conversa__link" aria-current="page">Roteiro de viagem Paris</a>
+          <button type="button" class="conversa__mais" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-conversa-1">
+            Mais opções
+          </button>
+          <ul id="opcoes-conversa-1" class="conversa__opcoes" role="menu" hidden>
+            <li role="none"><button type="button" role="menuitem">Renomear</button></li>
+            <li role="none"><button type="button" role="menuitem">Compartilhar</button></li>
+            <li role="none"><button type="button" role="menuitem">Excluir</button></li>
+          </ul>
+        </li>
+        <li class="conversa">
+          <a href="index.html?conversa=2" class="conversa__link">Indicação de restaurante</a>
+          <button type="button" class="conversa__mais" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-conversa-2">
+            Mais opções
+          </button>
+          <ul id="opcoes-conversa-2" class="conversa__opcoes" role="menu" hidden>
+            <li role="none"><button type="button" role="menuitem">Renomear</button></li>
+            <li role="none"><button type="button" role="menuitem">Compartilhar</button></li>
+            <li role="none"><button type="button" role="menuitem">Excluir</button></li>
+          </ul>
+        </li>
+        <li class="conversa">
+          <a href="index.html?conversa=3" class="conversa__link">Plano de fuga Flórida</a>
+          <button type="button" class="conversa__mais" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-conversa-3">
+            Mais opções
+          </button>
+          <ul id="opcoes-conversa-3" class="conversa__opcoes" role="menu" hidden>
+            <li role="none"><button type="button" role="menuitem">Renomear</button></li>
+            <li role="none"><button type="button" role="menuitem">Compartilhar</button></li>
+            <li role="none"><button type="button" role="menuitem">Excluir</button></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Usuário logado. Sem login, este bloco vira um link "Entrar" para login.html. -->
+    <footer class="menu-lateral__usuario">
+      <a href="perfil.html" class="usuario">
+        <span class="usuario__foto" aria-hidden="true">AG</span>
+        <span class="usuario__nome">Ariana Grande</span>
+        <span class="usuario__plano">Plano Essencial</span>
+      </a>
+      <button type="button" id="botao-sair">Sair</button>
+    </footer>
+  </aside>
+
+
+  <main id="conteudo" class="inicio">
+
+    <div class="inicio__fundo" aria-hidden="true"></div>
+
+    <nav id="progresso" class="progresso" aria-label="Etapas da viagem" hidden>
+      <ol>
+        <li class="progresso__etapa" aria-current="step">Voos</li>
+        <li class="progresso__etapa">Hotéis</li>
+        <li class="progresso__etapa">Restaurantes</li>
+        <li class="progresso__etapa">Experiências</li>
+        <li class="progresso__etapa">Revisão</li>
+      </ol>
+    </nav>
+
+    <section id="boas-vindas" class="boas-vindas" aria-labelledby="titulo-boas-vindas">
+      <h1 id="titulo-boas-vindas">Olá, <span id="nome-usuario">Fulano</span>!</h1>
+      <p>Sou Ari, sua assistente de viagens com IA.<br>Pronto para planejar sua próxima aventura?</p>
+    </section>
+
+
+    <section id="conversa" class="conversa-ari" aria-label="Conversa com a Ari" aria-live="polite" hidden>
+      <ol id="lista-mensagens" class="mensagens"></ol>
+    </section>
+
+    <form id="formulario-chat" class="chat" action="#" method="post">
+      <label for="campo-mensagem" class="chat__rotulo">Mensagem para a Ari</label>
+      <textarea id="campo-mensagem" name="mensagem" rows="1" maxlength="1000" required
+        placeholder="Para onde vamos viajar? Conte sua origem e destino, datas, viajantes e orçamento."></textarea>
+
+      <button type="button" id="botao-voz" class="chat__voz">Falar</button>
+      <button type="submit" class="chat__enviar">Enviar</button>
+    </form>
+
+  </main>
+
+  <!-- Mensagem de quem está usando -->
+  <template id="modelo-mensagem-usuario">
+    <li class="mensagem mensagem--usuario">
+      <p class="mensagem__texto"></p>
+    </li>
+  </template>
+
+  <!-- Resposta da Ari com os resultados de uma etapa -->
+  <template id="modelo-mensagem-ari">
+    <li class="mensagem mensagem--ari">
+      <article class="resposta">
+        <h2 class="resposta__titulo">Voos São Paulo (GRU) - Paris (CDG)</h2>
+        <p class="resposta__texto">Encontrei 3 opções de voo que se encaixam no seu roteiro e orçamento. Confira abaixo:</p>
+        <ul class="resposta__cards"></ul>
+      </article>
+    </li>
+  </template>
+
+  <template id="modelo-card-voo">
+    <li>
+      <article class="card-voo">
+        <header class="card-voo__cabecalho">
+          <img class="card-voo__logo" src="assets/img/simbolo-arrival.png" alt="" width="56" height="56">
+          <h3 class="card-voo__companhia">TAP Air Portugal</h3>
+          <ul class="card-voo__etiquetas">
+            <li><time datetime="2026-11-20">20 nov (sex)</time> - <time datetime="2026-11-25">25 nov (qua)</time></li>
+            <li>ida e volta</li>
+            <li>bagagem de mão inclusa</li>
+            <li>econômica</li>
+          </ul>
+          <p class="card-voo__preco"><data value="1200">R$ 1.200</data></p>
+          <button type="button" class="card-voo__selecionar">Selecionar</button>
+        </header>
+
+        <table class="card-voo__trechos">
+          <caption>Trechos do voo</caption>
+          <thead>
+            <tr>
+              <th scope="col">Trecho</th>
+              <th scope="col">Data</th>
+              <th scope="col">Voo</th>
+              <th scope="col">Saída</th>
+              <th scope="col">Chegada</th>
+              <th scope="col">Duração</th>
+              <th scope="col">Escalas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Ida</th>
+              <td>Sexta, 20 de novembro</td>
+              <td>TP6767</td>
+              <td>GRU <time>11:30</time></td>
+              <td>CDG <time>02:30</time></td>
+              <td>12h30min</td>
+              <td>Direto</td>
+            </tr>
+            <tr>
+              <th scope="row">Volta</th>
+              <td>Quarta, 25 de novembro</td>
+              <td>TP6969</td>
+              <td>CDG <time>22:30</time></td>
+              <td>GRU <time>11:30</time></td>
+              <td>12h30min</td>
+              <td>Direto</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </li>
+  </template>
+
+  <script type="module" src="js/chat.js"></script>
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/tema.js"></script>
+  <script type="module" src="js/conversas.js"></script>
+</body>
+</html>
