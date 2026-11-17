@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planos · Arrival</title>
+    <meta name="description" content="Planos do Arrival: Essencial (gratuito), Pro e Crew." />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <aside id="menu-lateral" class="menu-lateral" aria-label="Menu principal">
+      <div class="menu-lateral__topo">
+        <a href="index.html" class="menu-lateral__logo">
+          <img src="assets/img/logo-arrival.png" alt="Arrival, página inicial" width="160" height="42" />
+        </a>
+        <button
+          type="button"
+          class="menu-lateral__alternar"
+          aria-expanded="false"
+          aria-controls="menu-lateral"
+        >
+          Abrir ou fechar menu
+        </button>
+      </div>
+      <nav class="menu-lateral__acoes" aria-label="Ações">
+        <ul>
+          <li><a href="index.html">Novo chat</a></li>
+          <li><button type="button" id="botao-tema" aria-pressed="false">Aparência</button></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </nav>
+      <section class="menu-lateral__conversas" aria-labelledby="titulo-conversas">
+        <h2 id="titulo-conversas">Conversas recentes</h2>
+        <ul id="lista-conversas"></ul>
+      </section>
+      <footer class="menu-lateral__usuario">
+        <a href="perfil.html" class="usuario">
+          <span class="usuario__foto" aria-hidden="true"></span>
+          <span class="usuario__nome">Meu perfil</span>
+          <span class="usuario__plano"></span>
+        </a>
+        <button type="button" id="botao-sair">Sair</button>
+      </footer>
+    </aside>
+
+    <main id="conteudo" class="planos">
+      <a href="index.html" class="voltar">Voltar</a>
+
+      <header class="planos__topo">
+        <h1>Escolha o plano para a sua próxima viagem</h1>
+        <p>Comece de graça e faça upgrade quando quiser planejar mais.</p>
+      </header>
+
+      <p id="aviso-em-breve" class="aviso-em-breve" role="status" hidden>
+        Em breve! A assinatura dos planos Pro e Crew ainda não está disponível.
+      </p>
+
+      <ul class="lista-planos">
+        <li>
+          <article class="plano plano--atual" aria-labelledby="plano-essencial">
+            <h2 id="plano-essencial" class="plano__nome">Plano Essencial</h2>
+            <p class="plano__selo">Plano atual</p>
+            <p class="plano__preco">Gratuito</p>
+            <ul class="plano__recursos">
+              <li>Converse com a Ari</li>
+              <li>Até 4 roteiros por mês</li>
+              <li>Até 40 buscas por mês</li>
+              <li>Histórico de viagens salvas</li>
+            </ul>
+            <button type="button" class="plano__botao" disabled>Seu plano atual</button>
+          </article>
+        </li>
+
+        <li>
+          <article class="plano plano--pro" aria-labelledby="plano-pro">
+            <h2 id="plano-pro" class="plano__nome">Plano Arrival Pro</h2>
+            <p class="plano__preco">
+              <data value="19.90">R$ 19,90</data> <span class="plano__periodo">/mês</span>
+            </p>
+            <ul class="plano__recursos">
+              <li>Tudo do Essencial</li>
+              <li>Até 8 roteiros completos por mês</li>
+              <li>Até 100 buscas por mês</li>
+              <li>Sincronização com Agenda</li>
+              <li>Exportação em PDF</li>
+              <li>Revisar roteiros com a Ari</li>
+            </ul>
+            <button type="button" class="plano__botao">Assinar Pro</button>
+          </article>
+        </li>
+
+        <li>
+          <article class="plano plano--crew" aria-labelledby="plano-crew">
+            <h2 id="plano-crew" class="plano__nome">Plano Arrival Crew</h2>
+            <p class="plano__preco">
+              <data value="39.90">R$ 39,90</data> <span class="plano__periodo">/mês</span>
+            </p>
+            <ul class="plano__recursos">
+              <li>Tudo do Pro</li>
+              <li>Até 4 pessoas (Família)</li>
+              <li>Até 16 roteiros por mês</li>
+              <li>Até 12 buscas por dia</li>
+              <li>Adicione quem vai participar da viagem</li>
+            </ul>
+            <button type="button" class="plano__botao">Assinar Crew</button>
+          </article>
+        </li>
+      </ul>
+    </main>
+
+    <script type="module" src="js/planos.js"></script>
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/tema.js"></script>
+  </body>
+</html>

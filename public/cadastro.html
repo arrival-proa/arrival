@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Criar conta · Arrival</title>
+    <meta
+      name="description"
+      content="Crie sua conta grátis no Arrival e planeje viagens conversando com a Ari."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body class="pagina-acesso">
+    <main id="conteudo" class="acesso acesso--invertido">
+      <div class="acesso__ilustracao" aria-hidden="true">
+        <img src="assets/img/logo-arrival.png" alt="" width="450" height="118" />
+      </div>
+
+      <div class="acesso__formularios">
+        <a href="index.html" class="acesso__simbolo">
+          <img src="assets/img/simbolo-arrival.png" alt="Arrival, página inicial" width="72" height="52" />
+        </a>
+
+        <section class="acesso__bloco" aria-labelledby="titulo-cadastro">
+          <h1 id="titulo-cadastro">Cadastre-se</h1>
+
+          <form id="formulario-cadastro" class="formulario" action="#" method="post">
+            <div class="formulario__campo">
+              <label for="cadastro-email">Email</label>
+              <input
+                type="email"
+                id="cadastro-email"
+                name="email"
+                autocomplete="email"
+                placeholder="Digite seu endereço de email"
+                required
+              />
+            </div>
+            <div class="formulario__campo">
+              <label for="cadastro-nome">Nome</label>
+              <input
+                type="text"
+                id="cadastro-nome"
+                name="nome"
+                autocomplete="name"
+                maxlength="80"
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+            <div class="formulario__campo formulario__campo--senha">
+              <label for="cadastro-senha">Senha</label>
+              <input
+                type="password"
+                id="cadastro-senha"
+                name="senha"
+                autocomplete="new-password"
+                minlength="8"
+                placeholder="Defina sua senha"
+                required
+                aria-describedby="dica-senha"
+              />
+              <button type="button" class="mostrar-senha" aria-controls="cadastro-senha" aria-pressed="false">
+                Mostrar senha
+              </button>
+              <p id="dica-senha" class="formulario__dica">Mínimo de 8 caracteres.</p>
+            </div>
+
+            <div class="formulario__aceite">
+              <input type="checkbox" id="cadastro-termos" name="termos" required />
+              <label for="cadastro-termos">Li e aceito os termos de uso e a política de privacidade</label>
+              <button type="button" class="botao-termos" aria-haspopup="dialog" aria-controls="janela-termos">
+                Ler os termos
+              </button>
+            </div>
+
+            <p id="erro-cadastro" class="formulario__erro" role="alert" hidden></p>
+            <button type="submit" class="botao-principal">Criar conta</button>
+          </form>
+
+          <p>Já possui uma conta? <a href="login.html">Entrar</a></p>
+
+          <p class="separador"><span>Ou</span></p>
+          <button type="button" class="botao-google">Entrar com Google</button>
+        </section>
+      </div>
+    </main>
+
+    <dialog id="janela-termos" class="janela-termos" aria-labelledby="titulo-termos">
+      <h2 id="titulo-termos">Termos de uso e privacidade</h2>
+      <p>Versão provisória. O texto final será revisado pela equipe.</p>
+
+      <h3>O que é o Arrival</h3>
+      <p>
+        Um assistente de viagens com IA que busca opções e monta roteiros. O Arrival não vende nem reserva: a
+        compra acontece no site oficial de cada opção.
+      </p>
+
+      <h3>Dados que guardamos</h3>
+      <p>
+        Nome, e-mail, foto de perfil (se você enviar), suas conversas com a Ari e os roteiros salvos. Não
+        pedimos documento nem cartão.
+      </p>
+
+      <h3>Como usamos</h3>
+      <p>
+        Só para o funcionamento do serviço. A equipe de administração vê apenas números gerais, nunca suas
+        conversas.
+      </p>
+
+      <h3>Seus direitos (LGPD)</h3>
+      <p>Você pode pedir acesso, correção ou exclusão dos seus dados pelo contato da equipe.</p>
+
+      <h3>Planos e limites</h3>
+      <p>Cada plano tem um limite de roteiros e de buscas, descrito na página de planos.</p>
+
+      <form method="dialog">
+        <button type="submit">Fechar</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="js/auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entrar · Arrival</title>
+    <meta
+      name="description"
+      content="Entre na sua conta do Arrival para conversar com a Ari e ver seus roteiros."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body class="pagina-acesso">
+    <main id="conteudo" class="acesso">
+      <div class="acesso__formularios">
+        <a href="index.html" class="acesso__simbolo">
+          <img src="assets/img/simbolo-arrival.png" alt="Arrival, página inicial" width="72" height="52" />
+        </a>
+
+        <section id="bloco-entrar" class="acesso__bloco" aria-labelledby="titulo-entrar">
+          <h1 id="titulo-entrar">Boas-vindas ao Arrival!</h1>
+          <p>Realize seu login abaixo</p>
+
+          <form id="formulario-entrar" class="formulario" action="#" method="post">
+            <div class="formulario__campo">
+              <label for="entrar-email">Email</label>
+              <input
+                type="email"
+                id="entrar-email"
+                name="email"
+                autocomplete="email"
+                placeholder="Digite seu endereço de email"
+                required
+              />
+            </div>
+            <div class="formulario__campo formulario__campo--senha">
+              <label for="entrar-senha">Senha</label>
+              <input
+                type="password"
+                id="entrar-senha"
+                name="senha"
+                autocomplete="current-password"
+                minlength="8"
+                required
+              />
+              <button type="button" class="mostrar-senha" aria-controls="entrar-senha" aria-pressed="false">
+                Mostrar senha
+              </button>
+            </div>
+            <p id="erro-entrar" class="formulario__erro" role="alert" hidden></p>
+            <button type="submit" class="botao-principal">Continuar</button>
+          </form>
+
+          <p>Esqueceu sua senha? <a href="login.html?modo=recuperar">Redefinir</a></p>
+          <p>Ainda não possui conta? <a href="cadastro.html">Crie aqui</a></p>
+
+          <p class="separador"><span>Ou</span></p>
+          <button type="button" class="botao-google">Entrar com Google</button>
+        </section>
+
+        <section id="bloco-recuperar" class="acesso__bloco" aria-labelledby="titulo-recuperar" hidden>
+          <h1 id="titulo-recuperar">Recuperar senha</h1>
+          <p>Informe seu email para receber um link de redefinição de senha.</p>
+
+          <form id="formulario-recuperar" class="formulario" action="#" method="post">
+            <div class="formulario__campo">
+              <label for="recuperar-email">Email</label>
+              <input
+                type="email"
+                id="recuperar-email"
+                name="email"
+                autocomplete="email"
+                placeholder="Digite seu endereço de email"
+                required
+              />
+            </div>
+            <button type="submit" class="botao-principal">Enviar link</button>
+          </form>
+
+          <div id="aviso-recuperar" class="aviso-enviado" role="status" hidden>
+            <h2>Email enviado!</h2>
+            <p>
+              Enviamos um link de redefinição de senha para seu e-mail. Verifique sua caixa de entrada e
+              também o spam.
+            </p>
+          </div>
+
+          <p><a href="login.html">Retornar ao login</a></p>
+        </section>
+
+        <section id="bloco-nova-senha" class="acesso__bloco" aria-labelledby="titulo-nova-senha" hidden>
+          <h1 id="titulo-nova-senha">Criar nova senha</h1>
+
+          <form id="formulario-nova-senha" class="formulario" action="#" method="post">
+            <div class="formulario__campo formulario__campo--senha">
+              <label for="nova-senha">Nova senha</label>
+              <input
+                type="password"
+                id="nova-senha"
+                name="senha"
+                autocomplete="new-password"
+                minlength="8"
+                required
+                aria-describedby="dica-nova-senha"
+              />
+              <button type="button" class="mostrar-senha" aria-controls="nova-senha" aria-pressed="false">
+                Mostrar senha
+              </button>
+              <p id="dica-nova-senha" class="formulario__dica">Mínimo de 8 caracteres.</p>
+            </div>
+            <p id="erro-nova-senha" class="formulario__erro" role="alert" hidden></p>
+            <button type="submit" class="botao-principal">Salvar nova senha</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="acesso__ilustracao" aria-hidden="true">
+        <img src="assets/img/logo-arrival.png" alt="" width="450" height="118" />
+      </div>
+    </main>
+
+    <script type="module" src="js/auth.js"></script>
+  </body>
+</html>
