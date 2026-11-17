@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Histórico de roteiros · Arrival</title>
+    <meta name="description" content="Seus roteiros salvos no Arrival." />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <aside id="menu-lateral" class="menu-lateral" aria-label="Menu principal">
+      <div class="menu-lateral__topo">
+        <a href="index.html" class="menu-lateral__logo">
+          <img src="assets/img/logo-arrival.png" alt="Arrival, página inicial" width="160" height="42" />
+        </a>
+        <button
+          type="button"
+          class="menu-lateral__alternar"
+          aria-expanded="false"
+          aria-controls="menu-lateral"
+        >
+          Abrir ou fechar menu
+        </button>
+      </div>
+      <nav class="menu-lateral__acoes" aria-label="Ações">
+        <ul>
+          <li><a href="index.html">Novo chat</a></li>
+          <li><button type="button" id="botao-tema" aria-pressed="false">Aparência</button></li>
+          <li><a href="historico.html" aria-current="page">Histórico</a></li>
+        </ul>
+      </nav>
+      <section class="menu-lateral__conversas" aria-labelledby="titulo-conversas">
+        <h2 id="titulo-conversas">Conversas recentes</h2>
+        <ul id="lista-conversas"></ul>
+      </section>
+      <footer class="menu-lateral__usuario">
+        <a href="perfil.html" class="usuario">
+          <span class="usuario__foto" aria-hidden="true"></span>
+          <span class="usuario__nome">Meu perfil</span>
+          <span class="usuario__plano"></span>
+        </a>
+        <button type="button" id="botao-sair">Sair</button>
+      </footer>
+    </aside>
+
+    <main id="conteudo" class="historico">
+      <a href="index.html" class="voltar">Voltar</a>
+
+      <header class="historico__topo">
+        <h1>Histórico de roteiros</h1>
+        <p>Seus roteiros, do mais recente ao mais antigo.</p>
+      </header>
+
+      <section id="historico-vazio" class="estado-vazio" aria-labelledby="titulo-vazio" hidden>
+        <h2 id="titulo-vazio">Você ainda não salvou roteiros</h2>
+        <p>Comece uma conversa com a Ari e monte seu primeiro roteiro.</p>
+        <a href="index.html">Planejar uma viagem</a>
+      </section>
+
+      <ul id="lista-roteiros" class="lista-roteiros">
+        <li>
+          <article class="roteiro" aria-labelledby="roteiro-1-titulo">
+            <details class="roteiro__detalhes" open>
+              <summary class="roteiro__resumo">
+                <img
+                  class="roteiro__capa"
+                  src="assets/img/simbolo-arrival.png"
+                  alt=""
+                  width="48"
+                  height="48"
+                />
+                <span id="roteiro-1-titulo" class="roteiro__titulo">Roteiro de viagem Paris</span>
+                <span class="roteiro__info">
+                  <time datetime="2027-03-13">13 mar 2027</time> a
+                  <time datetime="2027-03-15">15 mar 2027</time> · 3 dias · criado em
+                  <time datetime="2026-11-05">05 nov 2026</time>
+                </span>
+              </summary>
+
+              <ol class="roteiro__dias">
+                <li class="dia">
+                  <h2 class="dia__titulo">
+                    <span class="dia__numero">Dia 1</span> <time datetime="2027-03-13">Sáb, 13 mar</time>
+                  </h2>
+                  <ol class="dia__itens">
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="14:00">14:00</time>
+                      <h3 class="atividade__nome">Check-in no hotel</h3>
+                      <p class="atividade__descricao">Região do Marais</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Reservar hotel</a>
+                    </li>
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="16:30">16:30</time>
+                      <h3 class="atividade__nome">Torre Eiffel</h3>
+                      <p class="atividade__descricao">Subida ao segundo andar</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Comprar ingresso</a>
+                    </li>
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="20:00">20:00</time>
+                      <h3 class="atividade__nome">Cruzeiro do Sena</h3>
+                      <p class="atividade__descricao">Saída ao lado da Torre Eiffel</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Reservar passeio</a>
+                    </li>
+                  </ol>
+                </li>
+
+                <li class="dia">
+                  <h2 class="dia__titulo">
+                    <span class="dia__numero">Dia 2</span> <time datetime="2027-03-14">Dom, 14 mar</time>
+                  </h2>
+                  <ol class="dia__itens">
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="09:00">09:00</time>
+                      <h3 class="atividade__nome">Museu do Louvre</h3>
+                      <p class="atividade__descricao">Chegue cedo para evitar filas</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Comprar ingresso</a>
+                    </li>
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="14:00">14:00</time>
+                      <h3 class="atividade__nome">Jardim das Tulherias</h3>
+                      <p class="atividade__descricao">Caminhada e pausa para o café</p>
+                    </li>
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="20:00">20:00</time>
+                      <h3 class="atividade__nome">Jantar em Montmartre</h3>
+                      <p class="atividade__descricao">Mesa para duas pessoas</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Reservar mesa</a>
+                    </li>
+                  </ol>
+                </li>
+
+                <li class="dia">
+                  <h2 class="dia__titulo">
+                    <span class="dia__numero">Dia 3</span> <time datetime="2027-03-15">Seg, 15 mar</time>
+                  </h2>
+                  <ol class="dia__itens">
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="10:00">10:00</time>
+                      <h3 class="atividade__nome">Palácio de Versalhes</h3>
+                      <p class="atividade__descricao">Bate-volta de trem (cerca de 1h)</p>
+                      <a href="#" class="atividade__acao" target="_blank" rel="noopener">Comprar ingresso</a>
+                    </li>
+                    <li class="atividade">
+                      <time class="atividade__hora" datetime="16:30">16:30</time>
+                      <h3 class="atividade__nome">Compras no Marais</h3>
+                      <p class="atividade__descricao">Lojas e ateliês de rua</p>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+
+              <section class="roteiro__participantes" aria-label="Quem vai nesta viagem" hidden>
+                <ul class="participantes"></ul>
+                <button type="button" class="participantes__adicionar">Adicionar participante</button>
+              </section>
+
+              <footer class="roteiro__acoes">
+                <button type="button" class="roteiro__pdf">Baixar PDF</button>
+                <button type="button" class="roteiro__agenda">Adicionar à agenda</button>
+                <a href="index.html?conversa=1" class="roteiro__continuar">Continuar conversa com Ari</a>
+              </footer>
+            </details>
+          </article>
+        </li>
+      </ul>
+    </main>
+
+    <script type="module" src="js/historico.js"></script>
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/tema.js"></script>
+  </body>
+</html>
