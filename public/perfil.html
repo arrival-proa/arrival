@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meu perfil · Arrival</title>
+    <meta name="description" content="Seus dados e seu plano no Arrival." />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <aside id="menu-lateral" class="menu-lateral" aria-label="Menu principal">
+      <div class="menu-lateral__topo">
+        <a href="index.html" class="menu-lateral__logo">
+          <img src="assets/img/logo-arrival.png" alt="Arrival, página inicial" width="160" height="42" />
+        </a>
+        <button
+          type="button"
+          class="menu-lateral__alternar"
+          aria-expanded="false"
+          aria-controls="menu-lateral"
+        >
+          Abrir ou fechar menu
+        </button>
+      </div>
+      <nav class="menu-lateral__acoes" aria-label="Ações">
+        <ul>
+          <li><a href="index.html">Novo chat</a></li>
+          <li><button type="button" id="botao-tema" aria-pressed="false">Aparência</button></li>
+          <li><a href="historico.html">Histórico</a></li>
+        </ul>
+      </nav>
+      <section class="menu-lateral__conversas" aria-labelledby="titulo-conversas">
+        <h2 id="titulo-conversas">Conversas recentes</h2>
+        <ul id="lista-conversas"></ul>
+      </section>
+      <footer class="menu-lateral__usuario">
+        <a href="perfil.html" class="usuario" aria-current="page">
+          <span class="usuario__foto" aria-hidden="true"></span>
+          <span class="usuario__nome">Meu perfil</span>
+          <span class="usuario__plano"></span>
+        </a>
+        <button type="button" id="botao-sair">Sair</button>
+      </footer>
+    </aside>
+
+    <main id="conteudo" class="perfil">
+      <a href="index.html" class="voltar">Voltar</a>
+      <h1 class="perfil__titulo">Meu perfil</h1>
+
+      <div class="perfil__foto">
+        <img
+          id="perfil-foto"
+          src="assets/img/simbolo-arrival.png"
+          alt="Sua foto de perfil"
+          width="160"
+          height="160"
+        />
+        <label for="perfil-arquivo-foto" class="perfil__trocar-foto">Trocar foto</label>
+        <input type="file" id="perfil-arquivo-foto" name="foto" accept="image/jpeg, image/png, image/webp" />
+      </div>
+
+      <form id="formulario-perfil" class="formulario perfil__dados" action="#" method="post">
+        <div class="formulario__campo">
+          <label for="perfil-nome">Nome</label>
+          <input type="text" id="perfil-nome" name="nome" autocomplete="name" maxlength="80" required />
+        </div>
+        <div class="formulario__campo">
+          <label for="perfil-email">E-mail</label>
+          <input type="email" id="perfil-email" name="email" autocomplete="email" required />
+        </div>
+        <div class="formulario__campo formulario__campo--senha">
+          <label for="perfil-nova-senha">Nova senha</label>
+          <input
+            type="password"
+            id="perfil-nova-senha"
+            name="senha"
+            autocomplete="new-password"
+            minlength="8"
+            aria-describedby="dica-senha"
+          />
+          <button type="button" class="mostrar-senha" aria-controls="perfil-nova-senha" aria-pressed="false">
+            Mostrar senha
+          </button>
+          <p id="dica-senha" class="formulario__dica">Deixe em branco para manter a senha atual.</p>
+        </div>
+
+        <p id="aviso-perfil" class="formulario__aviso" role="status" hidden></p>
+
+        <footer class="perfil__rodape">
+          <button type="button" class="botao-termos" aria-haspopup="dialog" aria-controls="janela-termos">
+            Termos de uso
+          </button>
+          <a href="#" class="perfil__feedback" target="_blank" rel="noopener">Feedback</a>
+          <button type="submit">Salvar alterações</button>
+        </footer>
+      </form>
+
+      <section class="perfil__plano" aria-labelledby="plano-atual">
+        <h2 id="plano-atual">Plano Essencial</h2>
+        <p>Quer criar mais roteiros? Mude de plano!</p>
+        <a href="planos.html">Ver planos</a>
+      </section>
+
+      <section id="secao-crew" class="perfil__crew" aria-labelledby="titulo-crew" hidden>
+        <h2 id="titulo-crew">Seu Crew</h2>
+        <ul id="lista-crew"></ul>
+        <form id="formulario-convite" class="formulario" action="#" method="post">
+          <div class="formulario__campo">
+            <label for="convite-email">Convidar pelo e-mail</label>
+            <input type="email" id="convite-email" name="email" autocomplete="off" required />
+          </div>
+          <button type="submit">Enviar convite</button>
+        </form>
+        <ul id="lista-convites"></ul>
+      </section>
+    </main>
+
+    <dialog id="janela-termos" class="janela-termos" aria-labelledby="titulo-termos">
+      <h2 id="titulo-termos">Termos de uso e privacidade</h2>
+      <p>Versão provisória. O texto final será revisado pela equipe.</p>
+
+      <h3>O que é o Arrival</h3>
+      <p>
+        Um assistente de viagens com IA que busca opções e monta roteiros. O Arrival não vende nem reserva: a
+        compra acontece no site oficial de cada opção.
+      </p>
+
+      <h3>Dados que guardamos</h3>
+      <p>
+        Nome, e-mail, foto de perfil (se você enviar), suas conversas com a Ari e os roteiros salvos. Não
+        pedimos documento nem cartão.
+      </p>
+
+      <h3>Como usamos</h3>
+      <p>
+        Só para o funcionamento do serviço. A equipe de administração vê apenas números gerais, nunca suas
+        conversas.
+      </p>
+
+      <h3>Seus direitos (LGPD)</h3>
+      <p>Você pode pedir acesso, correção ou exclusão dos seus dados pelo contato da equipe.</p>
+
+      <h3>Planos e limites</h3>
+      <p>Cada plano tem um limite de roteiros e de buscas, descrito na página de planos.</p>
+
+      <form method="dialog">
+        <button type="submit">Fechar</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="js/perfil.js"></script>
+    <script type="module" src="js/participantes.js"></script>
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/tema.js"></script>
+  </body>
+</html>
