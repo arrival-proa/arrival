@@ -82,6 +82,116 @@
     color: var(--cor-texto);
 }
 
+/* Seção de conversas recentes */
+
+.menu-lateral__conversas {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
+}
+
+.menu-lateral__conversas h2 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #a5a0cd;
+    padding: 0 0 0.5rem;
+}
+
+#lista-conversas {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-right: 2px;
+    width: 274px;
+}
+
+/* Cada item da lista de conversa */
+.conversa{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--cor-secundaria);
+    border-radius: 999px;
+    padding: 0 0.5rem 0 0.75rem;
+    box-shadow: 0 1px 4px #0C0A13;
+    transition: background 0.2s;
+    height: 34px;
+}
+
+.conversa:hover {
+    background-color: #2b2451;
+}
+
+/* Icone SVG */
+.conversa span:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.conversa span:first-child svg{
+    width: 15px;
+    height: 15px;
+}
+
+/* Link com título da conversa */
+.conversa__link{
+    flex: 1;
+    min-width: 0;
+    font-size: 0.90rem;
+    font-weight: 500;
+    color: var(--cor-texto);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Destaque para a conversa ativa */
+.conversa__link[aria-current="page"] {
+    color: #a58cf7;
+    font-family: 700;
+}
+
+/* Botão de Mais Opções (...) */
+.conversa__mais {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0;
+    background: transparent;
+    flex-shrink: 0;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+/* Centraliza o span e o SVG de três pontinhos */
+.conversa__mais span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conversa__mais:hover {
+    background-color: #2b2451;
+}
+
+/* Menu */
+
+
+
 
 
 
