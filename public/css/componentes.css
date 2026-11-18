@@ -1,3 +1,6 @@
+
+/* SIDE BAR ABERTA */
+
 .menu-lateral{
     background-color: var(--cor-secundaria);
     width: 318px;
@@ -19,6 +22,8 @@
     justify-content: space-between;
     padding: 14px 20px;
     cursor: pointer;
+    margin-top: 10px;
+
 }
 
 .menu-lateral__topo button{
@@ -26,8 +31,15 @@
     border: none;
 }
 
+.menu-lateral__logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .menu-lateral__acoes{
     width: 100%;
+    top: 110px;
 }
 
 .menu-lateral__acoes ul{
@@ -153,6 +165,12 @@
 .conversa__link{
     flex: 1;
     min-width: 0;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+
     font-size: 0.90rem;
     font-weight: 500;
     color: var(--cor-texto);
@@ -205,7 +223,7 @@
     padding: 0.45rem 0.65rem 0.45rem 0.5rem;
 
     margin-left: 0.875rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1875rem;
 
     width: 280px;
     height: 47px;
@@ -296,3 +314,148 @@
 #botao-sair:hover svg path {
     fill: #f87171;
 }
+
+/* SIDE BAR FECHADA */
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 60px;
+    z-index: 40;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.28);
+    transition: width 0.35s cubic-bezier(0.65, 0, 0.25, 1),
+                padding 0.35s cubic-bezier(0.65, 0, 0.25, 1),
+                border-radius 0.35s ease;
+}
+
+/* TOPO - sidebar fechada*/
+
+.menu-lateral .menu-lateral__topo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.1875rem;
+    padding: 0;
+    width: 100%;
+}
+
+/* Oculta nome da logo grande */
+.menu-lateral:not(.aberto) .logo-completa {
+    display: none;
+}
+
+.menu-lateral:not(.aberto) .logo-compacta {
+    display: block;
+    width: 37px;
+    height: 26px;
+    object-fit: contain;
+}
+
+/* Ações, ícones centralizados */
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul{
+    align-items: center;
+    gap: 1.1875rem;
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li button,
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li a {
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+}
+
+/* Esconde o texto*/
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes .label,
+.menu-lateral:not(.aberto) .menu-lateral__acoes a span:not(.ic),
+.menu-lateral:not(.aberto) #label {
+    display: none;
+}
+
+/* Esconde conversas recentes */
+.menu-lateral:not(.aberto) .menu-lateral__conversas {
+    display: none;
+}
+
+/* Rodapé(Perfil) - sidebar fechada */
+.menu-lateral:not(.aberto) .menu-lateral__usuario {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0;
+    margin-left: 0;
+    background-color: transparent;
+    box-shadow: none;
+    
+}
+
+.menu-lateral:not(.aberto) .usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-lateral:not(.aberto) .usuario__foto {
+    margin: 0 auto;
+}
+
+.menu-lateral:not(.aberto) .usuario__nome,
+.menu-lateral:not(.aberto) .usuario__plano,
+.menu-lateral:not(.aberto) #botao-sair {
+    display: none;
+}
+
+/* Estado aberto */
+
+.menu-lateral.aberto {
+  width: 318px;
+  align-items: stretch;
+}
+
+.menu-lateral.aberto .menu-lateral__topo {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.menu-lateral.aberto .logo-compacta{
+    display: none;
+}
+
+.menu-lateral.aberto .menu-lateral__acoes ul li {
+  width: 274px;
+  height: 47px;
+  border-radius: 999px;
+}
+
+.menu-lateral.aberto .menu-lateral__usuario {
+  width: 274px;
+  border-radius: 999px;
+}
+
+/* Em telas maiores (desktop), empurra o conteúdo principal suavemente */
+@media (min-width: 1024px) {
+  .menu-lateral {
+    position: relative;
+    flex-shrink: 0;
+  }
+}
+
