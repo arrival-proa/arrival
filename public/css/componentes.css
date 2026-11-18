@@ -1,6 +1,9 @@
 .menu-lateral{
     background-color: var(--cor-secundaria);
     width: 318px;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
     position: relative; 
     flex-shrink: 0; 
     overflow: hidden; 
@@ -32,7 +35,7 @@
     flex-direction: column;
     gap: 1.1875rem;
     background-color: var(--cor-secundaria);
-    padding: 0;
+    padding: 0 14px;
     margin-bottom: 0.5rem;
 }
 
@@ -72,12 +75,12 @@
 }
 
 .menu-lateral__acoes .ic svg{
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .menu-lateral__acoes .label, .menu-lateral__acoes a span:not(i.ic), #label {
-    font-size: 0.8125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--cor-texto);
 }
@@ -99,7 +102,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     color: #a5a0cd;
-    padding: 0 0 0.5rem;
+    padding: 0 14px 0.5rem;
 }
 
 #lista-conversas {
@@ -107,7 +110,8 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.9375rem;
+    padding: 0 14px;
     padding-right: 2px;
     width: 274px;
 }
@@ -188,16 +192,107 @@
     background-color: #2b2451;
 }
 
-/* Menu */
+/* Menu dropdown a se desenvolver... */
 
+/* Rodapé da sidebar (Perfil) */
 
+.menu-lateral__usuario{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem 0.45rem 0.5rem;
 
+    margin-left: 0.875rem;
+    margin-bottom: 1rem;
 
+    width: 280px;
+    height: 47px;
 
+    border-radius: 999px;
+    box-shadow: 2px 0 12px #0C0A13;
+}
 
+/* Link que agrupa foto, nome e plano */
 
+.usuario{
+    flex:1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "foto nome"
+        "foto plano";
+    column-gap: 0.65rem;
+    align-items: center;
+}
 
+.usuario__foto {
+    grid-area: foto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
 
-
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    overflow: hidden;
+    flex-shrink: 0;
 
     
+}
+
+.usuario__nome {
+    grid-area: nome;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.usuario__plano {
+    grid-area: plano;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #8081a8;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Botão de sair */
+
+#botao-sair {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    transition: background-color 0.2s, color 0.2s;
+    padding: 0;
+}
+
+#botao-sair svg {
+    width: 14px;
+    height: 14px;
+    transition: fill 0.2s;
+}
+
+#botao-sair:hover {
+    background-color: rgba(248, 113, 113, 0.15);
+    color: #f87171;
+}
+
+#botao-sair:hover svg path {
+    fill: #f87171;
+}
