@@ -3,15 +3,15 @@
 
 .menu-lateral{
     background-color: var(--cor-secundaria);
-    width: 318px;
+    width: 19.875rem;
     height: 100dvh;
     display: flex;
     flex-direction: column;
     position: relative; 
     flex-shrink: 0; 
     overflow: hidden; 
-    border-radius: 0 22px 22px 0;
-    box-shadow: 2px 0 14px rgba(110, 90, 190, .08);
+    border-radius: 0 1.375rem 1.375rem 0;
+    box-shadow: 0.125rem 0 0.875rem rgba(110, 90, 190, .08);
     z-index: 2;
     transition: width .55s var(--ease), border-radius .55s var(--ease);
 }
@@ -20,9 +20,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
+    padding: 0.875rem 1.25rem;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 
 }
 
@@ -39,7 +39,7 @@
 
 .menu-lateral__acoes{
     width: 100%;
-    top: 110px;
+    top: 6.875rem;
 }
 
 .menu-lateral__acoes ul{
@@ -47,16 +47,16 @@
     flex-direction: column;
     gap: 1.1875rem;
     background-color: var(--cor-secundaria);
-    padding: 0 14px;
+    padding: 0 0.875rem;
     margin-bottom: 0.5rem;
 }
 
 .menu-lateral__acoes ul li{
-    box-shadow: 2px 0 12px #0C0A13;
+    box-shadow: 0.125rem 0 0.75rem #0C0A13;
     border-radius: 999px;
 
-    height: 47px;
-    width: 274px;
+    height: 2.9375rem;
+    width: 17.125rem;
 
     overflow: hidden;
     transition: background-color 0.2s; 
@@ -82,13 +82,13 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .menu-lateral__acoes .ic svg{
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .menu-lateral__acoes .label, .menu-lateral__acoes a span:not(i.ic), #label {
@@ -114,7 +114,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     color: #a5a0cd;
-    padding: 0 14px 0.5rem;
+    padding: 0 0.875rem 0.5rem;
 }
 
 #lista-conversas {
@@ -123,9 +123,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.9375rem;
-    padding: 0 14px;
-    padding-right: 2px;
-    width: 274px;
+    padding: 0 0.875rem;
+    padding-right: 0.125rem;
+    width: 17.125rem;
 }
 
 /* Cada item da lista de conversa */
@@ -137,9 +137,9 @@
     background: var(--cor-secundaria);
     border-radius: 999px;
     padding: 0 0.5rem 0 0.75rem;
-    box-shadow: 0 1px 4px #0C0A13;
+    box-shadow: 0 0.0625rem 0.25rem #0C0A13;
     transition: background 0.2s;
-    height: 34px;
+    height: 2.125rem;
 }
 
 .conversa:hover {
@@ -152,13 +152,13 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
 }
 
 .conversa span:first-child svg{
-    width: 15px;
-    height: 15px;
+    width: 0.9375rem;
+    height: 0.9375rem;
 }
 
 /* Link com título da conversa */
@@ -187,8 +187,8 @@
 
 /* Botão de Mais Opções (...) */
 .conversa__mais {
-    width: 26px;
-    height: 26px;
+    width: 1.625rem;
+    height: 1.625rem;
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -225,11 +225,11 @@
     margin-left: 0.875rem;
     margin-bottom: 1.1875rem;
 
-    width: 280px;
-    height: 47px;
+   width: 17.5rem;
+    height: 2.9375rem;
 
     border-radius: 999px;
-    box-shadow: 2px 0 12px #0C0A13;
+    box-shadow: 0.125rem 0 0.75rem #0C0A13;
 }
 
 /* Link que agrupa foto, nome e plano */
@@ -238,7 +238,7 @@
     flex:1;
     min-width: 0;
     display: grid;
-    grid-template-columns: 34px 1fr;
+    grid-template-columns: 2.125rem 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
         "foto nome"
@@ -249,8 +249,8 @@
 
 .usuario__foto {
     grid-area: foto;
-    width: 34px;
-    height: 34px;
+    width: 2.125rem;
+    height: 2.125rem;
     border-radius: 50%;
 
     color: #ffffff;
@@ -258,7 +258,7 @@
     font-weight: 700;
     display: grid;
     place-items: center;
-    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border: 0.09375rem solid rgba(255, 255, 255, 0.85);
     overflow: hidden;
     flex-shrink: 0;
 
@@ -289,8 +289,8 @@
 /* Botão de sair */
 
 #botao-sair {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     border-radius: 50%;
     cursor: pointer;
     flex-shrink: 0;
@@ -301,8 +301,8 @@
 }
 
 #botao-sair svg {
-    width: 14px;
-    height: 14px;
+    width: 0.875rem;
+    height: 0.875rem;
     transition: fill 0.2s;
 }
 
@@ -323,14 +323,14 @@
     left: 0;
     bottom: 0;
 
-    width: 60px;
+    width: 3.75rem;
     z-index: 40;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.28);
     transition: width 0.35s cubic-bezier(0.65, 0, 0.25, 1),
                 padding 0.35s cubic-bezier(0.65, 0, 0.25, 1),
                 border-radius 0.35s ease;
@@ -355,8 +355,8 @@
 
 .menu-lateral:not(.aberto) .logo-compacta {
     display: block;
-    width: 37px;
-    height: 26px;
+    width: 2.3125rem;
+    height: 1.625rem;
     object-fit: contain;
 }
 
@@ -367,8 +367,8 @@
 }
 
 .menu-lateral:not(.aberto) .menu-lateral__acoes ul li{
-    width: 38px;
-    height: 38px;
+    width: 2.375rem;
+    height: 2.375rem;
     border-radius: 50%;
 }
 
@@ -425,7 +425,7 @@
 /* Estado aberto */
 
 .menu-lateral.aberto {
-  width: 318px;
+  width: 19.875rem;
   align-items: stretch;
 }
 
@@ -433,7 +433,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
+  padding: 0.875rem 1.25rem;
 }
 
 .menu-lateral.aberto .logo-compacta{
@@ -441,13 +441,13 @@
 }
 
 .menu-lateral.aberto .menu-lateral__acoes ul li {
-  width: 274px;
-  height: 47px;
+  width: 17.125rem;
+  height: 2.9375rem;
   border-radius: 999px;
 }
 
 .menu-lateral.aberto .menu-lateral__usuario {
-  width: 274px;
+  width: 17.125rem;
   border-radius: 999px;
 }
 
