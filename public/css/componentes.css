@@ -486,7 +486,7 @@
 
     border-radius: 999px;
     background-color: var(--cor-secundaria);
-    border: 1px solid rgba(162, 140, 248, 0.16);
+    border: 0.0625rem solid rgba(162, 140, 248, 0.16);
 
     font-size: 0.85rem;
     font-weight: 500;
@@ -502,7 +502,7 @@
 .voltar:hover {
     background-color: #261f47;
     border-color: rgba(162, 140, 248, 0.4);
-    transform: translateX(-2px);
+    transform: translateX(-0.125rem);
 }
 
 /* Foto de perfil +  botao lápis */
@@ -515,13 +515,13 @@
 }
 
 #perfil-foto{
-    width: 130px;
-    height: 130px;
+    width: 8.125rem;
+    height: 8.125rem;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid rgba(162, 140, 248, 0.35);
     background-color: #261f47;
-    box-shadow:  0 10px 28px rgba(0, 0, 0, 0.45);
+    box-shadow:  0 0.625rem 1.75rem rgba(0, 0, 0, 0.45);
 }
 
 #perfil-arquivo-foto{
@@ -532,10 +532,10 @@
 
 .perfil__trocar-foto{
     position: absolute;
-    right: 2px;
-    bottom: 2px;
-    width: 38px;
-    height: 38px;
+    right: 0.125rem;
+    bottom: 0.125rem;
+    width: 2.375rem;
+    height: 2.375rem;
     border-radius: 50%;
     background-color: #1C192B;
     
@@ -557,8 +557,8 @@
 .perfil__dados {
     background-color: #1C192B;
     width: 100%;
-    max-width: 665px;
-    height: 546px;
+    max-width: 41.5625rem;
+    height: 34.125rem;
 
     border-radius: 1.375rem ;
     padding: 1.75rem 1.75rem 1.35rem;
@@ -602,7 +602,7 @@
 
 .formulario__campo input{
     width: 100%;
-    height: 60px;
+    height: 3.75rem;
     padding-left: 2.7rem;
     padding-right: 1rem;
     border-radius: 999px;
@@ -687,14 +687,14 @@
 .perfil__divisor-acao{
     color:rgba(162, 140, 248, 0.12);
     font-size: 3rem;
-    padding: 0 30px ;
+    padding: 0 1.875rem ;
     
 }
 
 .perfil__rodape button[type="submit"] {
     margin-left: auto;
-    width: 258px;
-    height: 45px;
+    width: 16.125rem;
+    height: 2.8125rem;
     padding: 0.65rem 1.35rem;
     border-radius: 999px;
     background-color: var(--cor-secundaria);
@@ -714,8 +714,8 @@
 /* Card__plano atual */
 .perfil__plano{
     width: 100%;
-    max-width: 665px;
-    height: 116px;
+    max-width: 41.5625rem;
+    height: 7.25rem;
     margin-top: 1.15rem;
     padding: 1.25rem 1.75rem;
     border-radius: 1.25rem;
@@ -748,8 +748,8 @@
     background-color: var(--cor-secundaria);
     box-shadow: 0.125rem 0 0.75rem #0C0A13;
 
-    height: 68px;
-    width: 290px;
+    height: 4.25rem;
+    width: 18.125rem;
 
     display: flex;
     align-items: center;
