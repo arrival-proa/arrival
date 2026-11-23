@@ -486,7 +486,7 @@
 
     border-radius: 999px;
     background-color: var(--cor-secundaria);
-    border: 1px solid rgba(162, 140, 248, 0.16);
+    border: 0.0625rem solid rgba(162, 140, 248, 0.16);
 
     font-size: 0.85rem;
     font-weight: 500;
@@ -502,7 +502,7 @@
 .voltar:hover {
     background-color: #261f47;
     border-color: rgba(162, 140, 248, 0.4);
-    transform: translateX(-2px);
+    transform: translateX(-0.125rem);
 }
 
 /* Foto de perfil +  botao lápis */
@@ -515,23 +515,27 @@
 }
 
 #perfil-foto{
-    width: 100%;
-    height: 100%;
+    width: 8.125rem;
+    height: 8.125rem;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid rgba(162, 140, 248, 0.35);
     background-color: #261f47;
-    box-shadow:  0 10px 28px rgba(0, 0, 0, 0.45);
+    box-shadow:  0 0.625rem 1.75rem rgba(0, 0, 0, 0.45);
+}
+
+#perfil-arquivo-foto{
+    display: none;
 }
 
 /* Label vira botão circular do lápis */
 
 .perfil__trocar-foto{
     position: absolute;
-    right: 2px;
-    bottom: 2px;
-    width: 38px;
-    height: 38px;
+    right: 0.125rem;
+    bottom: 0.125rem;
+    width: 2.375rem;
+    height: 2.375rem;
     border-radius: 50%;
     background-color: #1C192B;
     
@@ -547,3 +551,281 @@
     border-color: #a28cf8;
     transform: scale(1.06);
 }
+
+/* Card do formulário de dados */
+
+.perfil__dados {
+    background-color: #1C192B;
+    width: 100%;
+    max-width: 41.5625rem;
+    height: 34.125rem;
+
+    border-radius: 1.375rem ;
+    padding: 1.75rem 1.75rem 1.35rem;
+
+    display: flex;
+    flex-direction: column;
+    gap:1.25rem;
+    box-shadow: 0 0.875rem 2.25rem rgba(0, 0, 0, 0.35);
+}
+
+.formulario__campo{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    position: relative;
+}
+
+.formulario__campo label {
+    font-family: var(--fonte-texto);
+    font-size: 1.16rem;
+    font-weight: 400;
+    color: var(--cor-texto);
+}
+
+/* ícone á esquerda */
+
+.campo-icone{
+    position: absolute;
+    left: 1.1rem;
+    top: 3.225rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.campo-icone svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.formulario__campo input{
+    width: 100%;
+    height: 3.75rem;
+    padding-left: 3.7rem;
+    padding-right: 1rem;
+    border-radius: 999px;
+    background-color: #1C192B;
+    color: #AEAEAE;
+    font-size: 0.92rem;
+    outline: none;
+    border: none;
+    box-shadow: 0.125rem 0 0.75rem #0C0A13;
+}
+
+.formulario__campo input:focus{
+    border-color: #a28cf8;
+    box-shadow: 0 0 0 0.1875rem rgba(162, 140, 248, 0.15);
+}
+
+.formulario__campo input::placeholder {
+    color: #AEAEAE;
+    font-size: 1.125rem;
+    opacity: 1;
+}
+
+/* Campo de senha e botão de mostrar e ocultar */
+.formulario__campo--senha input{
+    height: 3.75rem;
+    line-height: 3.75rem;
+    padding-top: 0.825rem;
+    padding-bottom: 0;
+}
+    
+
+.formulario__campo--senha input::placeholder{
+    line-height: normal;
+    opacity: 1;
+}
+
+.mostrar-senha{
+    position: absolute;
+    right: 0.75rem;
+    top: 3.30rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0 0.25rem;
+
+}
+
+.mostrar-senha svg{
+    width: 1.25rem;
+    height: 1rem;
+}
+
+.formulario__campo__dica{
+    font-size: 0.75rem;
+    color: var(--cor-texto);
+    margin: 0;
+}
+
+.formulario__aviso{
+    font-size: 0.85rem;
+    color: var(--cor-texto);
+    margin: 0;
+}
+
+/* Rodapé do formulário */
+.perfil__rodape{
+    margin-top: 0.35rem;
+    padding-top: 1.15rem;
+    border-top: 0.125rem solid rgba(162, 140, 248, 0.12);
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.botao-termos,
+.perfil__feedback{
+    color:var(--cor-texto);
+    font-size: 1rem;
+    text-decoration: underline;
+    text-underline-offset: 0.1875rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.botao-termos span,
+.perfil__feedback sapn svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    display: block;
+}
+
+.perfil__divisor-acao{
+    color:rgba(162, 140, 248, 0.12);
+    font-size: 3rem;
+    padding: 0 1.875rem ;
+    
+}
+
+.perfil__rodape button[type="submit"] {
+    margin-left: auto;
+    width: 16.125rem;
+    height: 2.8125rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 999px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    box-shadow: 0.125rem 0 0.75rem #0C0A13;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.perfil__rodape button[type="submit"]:hover{
+    background-color:#6d50de ;
+    border-color:#a28cf8 ;
+}
+
+/* Card__plano atual */
+.perfil__plano{
+    width: 100%;
+    max-width: 41.5625rem;
+    height: 7.25rem;
+    margin-top: 1.15rem;
+    padding: 1.25rem 1.75rem;
+    border-radius: 1.25rem;
+    background-color: var(--cor-secundaria);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.perfil__plano h2{
+    margin: 0 0 0.25rem;
+    font-size: 1.813rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.perfil__plano div{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.perfil__plano p {
+    font-size: 0.875rem;
+}
+
+.perfil__plano a {
+    border-radius: 999px;
+    background-color: var(--cor-secundaria);
+    box-shadow: 0.125rem 0 0.75rem #0C0A13;
+
+    height: 4.25rem;
+    width: 18.125rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.188rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: backgound-color 0.2s, color 0.2s; border-color: 0.2s;
+}
+
+.perfil__plano a:hover{
+    background-color: #28204c;
+    border-color: #a28cf8;
+}
+
+/* Seção Crew e modal de termos */
+.perfil__crew {
+  width: 100%;
+  max-width: 35rem;
+  margin-top: 1.15rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 1.25rem;
+  background-color: rgba(22, 18, 42, 0.85);
+  border: 0.0625rem solid rgba(162, 140, 248, 0.14);
+}
+
+.janela-termos {
+  max-width: 33.75rem;
+  width: calc(100% - 2rem);
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  background-color: #18142c;
+  color: var(--cor-texto, #e1e4f8);
+  border: 0.0625rem solid rgba(162, 140, 248, 0.25);
+}
+
+.janela-termos::backdrop {
+  background-color: rgba(6, 5, 14, 0.72);
+  backdrop-filter: blur(0.25rem);
+}
+
+@media (max-width: 40rem) {
+  .perfil {
+    padding: 1.25rem 1rem 2.5rem;
+  }
+
+  .perfil__dados,
+  .perfil__plano {
+    padding: 1.25rem;
+  }
+
+  .perfil__plano {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .perfil__plano a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
