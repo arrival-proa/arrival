@@ -1,0 +1,67 @@
+/* ======================================
+    ARRIVAL - BASE
+    fundamentos visuais
+========================================== */
+
+
+@import url(https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+:root{
+    color-scheme: dark;
+    --fonte-título: "Outfit", sans-serif;
+    --fonte-texto: "Plus Jakarta Sans", sans-serif;
+
+    --cor-principal: #0C0A16;
+    --cor-secundaria: #1C192B;
+    --cor-icones: #8081A8;
+
+    --cor-título: #E1E4F8;
+    --cor-texto: #E1E4F8;
+
+    --transicao: 180ms ease;
+    --largura-menu: 76px;
+}
+
+* { 
+    box-sizing: border-box; margin: 0; 
+    padding: 0; 
+    list-style: none;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body{
+    background: var(--cor-principal);
+    color: var(--cor-texto);
+    display: flex;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--fonte-título);
+}
+
+a, p, li {
+    font-family: var(--fonte-texto);
+
+}
+
+button {
+    font-family: var(--fonte-texto);
+    color: inherit;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+button, a {
+    background: transparent;
+    border: none;
+}
+
+
+
+  
