@@ -933,8 +933,193 @@
   outline-offset: 0.125rem;
 }
 
+.acesso--invertido .formulario__campo--senha {
+  position: relative;
+}
+
+.acesso--invertido .formulario__campo--senha label {
+  line-height: 1.5rem;
+}
+
 .acesso--invertido .formulario__campo--senha input {
-  padding-right: 8rem;
+  padding-right: 3.5rem;
+}
+
+.acesso--invertido .mostrar-senha {
+  position: absolute;
+  top: 4rem;
+  right: 1.25rem;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.acesso--invertido .mostrar-senha::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-color: #9690ad;
+  mask: url('../assets/icones/mostrar-senha.svg') center / contain no-repeat;
+
+  opacity: 0.6;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
+}
+
+.acesso--invertido .mostrar-senha:hover::before,
+.acesso--invertido .mostrar-senha[aria-pressed='true']::before {
+  background-color: #a28cf8;
+  opacity: 1;
+}
+
+.acesso--invertido .mostrar-senha:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.25rem;
+}
+
+.acesso--invertido .formulario__dica {
+  font-size: 0.75rem;
+  color: #9690ad;
+}
+
+.acesso--invertido .formulario__aceite {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.acesso--invertido .formulario__aceite input {
+  appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 0.3125rem;
+  box-shadow: none;
+  cursor: pointer;
+
+  display: grid;
+  place-content: center;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.acesso--invertido .formulario__aceite input:hover {
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked {
+  background-color: #a28cf8;
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked::before {
+  content: '';
+  width: 0.3125rem;
+  height: 0.5625rem;
+  border: solid #1c192b;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: rotate(45deg);
+}
+
+.acesso--invertido .formulario__aceite input:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.1875rem;
+}
+
+.acesso--invertido .formulario__aceite {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.acesso--invertido .formulario__aceite input {
+  appearance: none;
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 0.3125rem;
+  box-shadow: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.acesso--invertido .formulario__aceite input:hover {
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked {
+  background-color: #a28cf8;
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked::before {
+  content: '';
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  width: 0.3125rem;
+  height: 0.5625rem;
+  box-sizing: border-box;
+
+  border: solid #1c192b;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.acesso--invertido .formulario__aceite input:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.1875rem;
+}
+
+.acesso--invertido .formulario__aceite label {
+  flex: 1;
+  color: #dfdbea;
+  cursor: pointer;
+}
+
+.acesso--invertido .botao-termos {
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #a28cf8;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .acesso--invertido button {
