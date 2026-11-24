@@ -1355,3 +1355,65 @@
     margin: 1.25rem 0;
   }
 }
+
+/* ==================== CADASTRO - MODO CLARO ==================== */
+
+[data-tema='claro'] .acesso--invertido {
+  background-image: url('../assets/img/background-light-desktop.png');
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__campo input {
+  border-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__campo input::placeholder {
+  color: var(--cor-placeholder);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__dica {
+  color: var(--cor-placeholder);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha::before {
+  background-color: var(--cor-icones);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha:hover::before,
+[data-tema='claro'] .acesso--invertido .mostrar-senha[aria-pressed='true']::before {
+  background-color: var(--cor-link);
+}
+
+[data-tema='claro'] .acesso--invertido a,
+[data-tema='claro'] .acesso--invertido .botao-termos {
+  color: var(--cor-link);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__aceite label {
+  color: var(--cor-texto);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__aceite input {
+  border-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha::before {
+  opacity: 1;
+}
+
+[data-tema='claro'] .acesso--invertido .separador {
+  color: var(--cor-icones);
+}
+
+[data-tema='claro'] .acesso--invertido .separador::before,
+[data-tema='claro'] .acesso--invertido .separador::after {
+  background-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .botao-google {
+  border-color: var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+[data-tema='claro'] .acesso--invertido .acesso__bloco p a {
+  color: var(--cor-link);
+}
