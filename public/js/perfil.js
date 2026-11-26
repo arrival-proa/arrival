@@ -124,3 +124,27 @@ function processarImagemQuadrada(arquivo, tamanho = 512, qualidade = 0.85) {
     img.src = urlTemp;
   });
 }
+
+//  Valida o upload da imagem e exibe a foto de perfil
+
+arquivoInput?.addEventListener('change', async () => {
+  const arquivo = arquivoInput.files?.[0];
+  arquivoInput.value = '';
+  if (!arquivo) return;
+
+  if (!TIPOS_PERMITIDOS.includes(arquivo.type)) {
+    return mostrarAviso('Escolha uma imagem JPG, PNG ou WebP.', 'erro');
+  }
+
+  if (arquivo.size > TAMANHO_MAX_MB * 1024 * 1024) {
+    return mostrarAviso(`Máximo de ${TAMANHO_MAX_MB} MB.`, 'erro');
+  }
+
+  try {
+    fotoDataUrlPendente = await processarImagemQuadrada(arquivo);
+    if (fotoImg) fotoImg.src = fotoDataUrlPendente;
+    mostrarAviso('Prévia pronta. Clique em "Salvar alterações".', 'info');
+  } catch {
+    mostrarAviso('Não foi possível ler essa imagem.', 'erro');
+  }
+});
