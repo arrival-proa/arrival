@@ -171,3 +171,57 @@ janelaTermos?.addEventListener('click', (event) => {
     janelaTermos.close();
   }
 });
+
+// valida envio do formulario salvando no localstorage
+
+formPerfil?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const nome = nomeInput?.value.trim() || '';
+  const email = emailInput?.value.trim() || '';
+  const novaSenha = senhaInput?.value || '';
+
+  if (!nome) {
+    mostrarAviso('Preencha o seu nome.', 'erro');
+    nomeInput?.focus();
+    return;
+  }
+
+  if (!email || !emailInput?.checkValidity()) {
+    mostrarAviso('Digite um e-mail válido.', 'erro');
+    emailInput?.focus();
+    return;
+  }
+
+  if (novaSenha && novaSenha.length < 8) {
+    mostrarAviso('A nova senha deve ter pelo menos 8 caracteres.', 'erro');
+    senhaInput?.focus();
+    return;
+  }
+
+  const mudouNome = nome !== estadoAtual.nome;
+  const mudouEmail = email !== estadoAtual.email;
+  const mudouFoto = Boolean(fotoDataUrlPendente);
+  const mudouSenha = Boolean(novaSenha);
+
+  if (!mudouNome && !mudouEmail && !mudouFoto && !mudouSenha) {
+    mostrarAviso('Nenhuma alteração foi feita.', 'info');
+    return;
+  }
+
+  estadoAtual = {
+    ...estadoAtual,
+    nome,
+    email,
+    foto: fotoDataUrlPendente || estadoAtual.foto
+  };
+
+  localStorage.setItem(CHAVE_STORAGE, JSON.stringify(estadoAtual));
+  fotoDataUrlPendente = null;
+  if (senhaInput) senhaInput.value = '';
+
+  atualizarSidebar(estadoAtual);
+  mostrarAviso('Alterações salvas localmente no navegador!', 'sucesso');
+});
+
+document.addEventListener('DOMContentLoaded', carregarEstadoLocal);
