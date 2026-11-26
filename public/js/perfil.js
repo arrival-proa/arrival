@@ -40,3 +40,23 @@ function mostrarAviso(mensagem, tipo = 'info') {
   avisoEl.dataset.tipo = tipo;
   avisoEl.hidden = !mensagem;
 }
+
+// Aplica atualização da sidebar ao alterar o nome e foto
+
+function atualizarSidebar({ nome, foto } = {}) {
+  if (nome) {
+    document.querySelectorAll('.usuario__nome').forEach((el) => {
+      el.textContent = nome;
+    });
+  }
+
+  const [primeiro = '', segundo = ''] = (nome || '').trim().split(/\s+/);
+  const iniciais = (primeiro[0] || segundo[0] || '?') + (segundo[0] || primeiro[1] || '');
+
+  document.querySelectorAll('.usuario__foto').forEach((el) => {
+    el.style.backgroundImage = foto ? `url("${foto}")` : '';
+    el.style.backgroundSize = foto ? 'cover' : '';
+    el.style.backgroundPosition = foto ? 'center' : '';
+    el.textContent = foto ? '' : iniciais.toUpperCase();
+  });
+}
