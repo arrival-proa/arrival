@@ -94,3 +94,33 @@ function carregarEstadoLocal() {
   atualizarPlano(estadoAtual.plano);
 }
 
+// Funcionalidade de fazer um corte na imagem escolhida pelo usuário, centralizando a foto.
+
+function processarImagemQuadrada(arquivo, tamanho = 512, qualidade = 0.85) {
+  return new Promise((resolve, reject) => {
+    const urlTemp = URL.createObjectURL(arquivo);
+    const img = new Image();
+
+    img.onload = () => {
+      URL.revokeObjectURL(urlTemp);
+      const lado = Math.min(img.width, img.height);
+      const sx = (img.width - lado) / 2;
+      const sy = (img.height - lado) / 2;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = tamanho;
+      canvas.height = tamanho;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, sx, sy, lado, lado, 0, 0, tamanho, tamanho);
+      resolve(canvas.toDataURL('image/webp', qualidade));
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(urlTemp);
+      reject(new Error('Arquivo de imagem inválido.'));
+    };
+
+    img.src = urlTemp;
+  });
+}
