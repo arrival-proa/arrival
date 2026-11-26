@@ -60,3 +60,19 @@ function atualizarSidebar({ nome, foto } = {}) {
     el.textContent = foto ? '' : iniciais.toUpperCase();
   });
 }
+
+// Atualização do plano
+
+function atualizarPlano(plano = 'essencial') {
+  const mapa = {
+    essencial: 'Plano Essencial',
+    pro: 'Plano Arrival Pro',
+    crew: 'Plano Arrival Crew'
+  };
+  const chave = String(plano).toLowerCase();
+  if (planoTituloEl) planoTituloEl.textContent = mapa[chave] || 'Plano Essencial';
+  if (secaoCrewEl) secaoCrewEl.hidden = chave !== 'crew';
+}
+
+
+
