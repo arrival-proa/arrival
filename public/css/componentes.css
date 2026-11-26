@@ -1417,3 +1417,70 @@
 [data-tema='claro'] .acesso--invertido .acesso__bloco p a {
   color: var(--cor-link);
 }
+
+/* ==================== CADASTRO - VALIDAÇÃO ==================== */
+
+.acesso--invertido .campo-erro,
+.acesso--invertido .formulario__erro {
+  font-family: var(--fonte-texto);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #f87171;
+}
+
+.acesso--invertido input[aria-invalid='true'] {
+  border-color: #f87171;
+}
+
+.acesso--invertido input[aria-invalid='true']:focus {
+  outline-color: #f87171;
+}
+
+[data-tema='claro'] .acesso--invertido .campo-erro,
+[data-tema='claro'] .acesso--invertido .formulario__erro {
+  color: #dc2626;
+}
+
+[data-tema='claro'] .acesso--invertido input[aria-invalid='true'] {
+  border-color: #dc2626;
+}
+
+[data-tema='claro'] .acesso--invertido input[aria-invalid='true']:focus {
+  outline-color: #dc2626;
+}
+
+/* Ocultar dica de senha quando houver erro */
+
+.acesso--invertido .formulario__campo--senha:has(input[aria-invalid='true']) .formulario__dica {
+  display: none;
+}
+
+/* Aproximar mensagem de erro dos termos */
+
+.acesso--invertido #erro-termos {
+  margin-top: -1rem;
+}
+
+/* Ajustar altura do formulário */
+
+body.pagina-acesso:has(.acesso--invertido) {
+  height: auto;
+  min-height: 100dvh;
+}
+
+.acesso--invertido .acesso__formularios {
+  justify-content: center;
+}
+
+/* Ajustes da validação no mobile */
+
+@media (max-width: 48rem) {
+  .acesso--invertido #erro-senha {
+    grid-area: 3 / 1;
+  }
+
+  .acesso--invertido #erro-termos {
+    margin-top: -0.75rem;
+  }
+}

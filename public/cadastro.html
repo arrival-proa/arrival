@@ -32,7 +32,7 @@
         <section class="acesso__bloco" aria-labelledby="titulo-cadastro">
           <h1 id="titulo-cadastro">Cadastre-se</h1>
 
-          <form id="formulario-cadastro" class="formulario" action="#" method="post">
+          <form id="formulario-cadastro" class="formulario" action="#" method="post" novalidate>
             <div class="formulario__campo">
               <label for="cadastro-email">Email</label>
               <input
@@ -43,6 +43,7 @@
                 placeholder="Digite seu endereço de email"
                 required
               />
+              <p id="erro-email" class="campo-erro" role="alert" hidden></p>
             </div>
             <div class="formulario__campo">
               <label for="cadastro-nome">Nome</label>
@@ -55,6 +56,7 @@
                 placeholder="Digite seu nome completo"
                 required
               />
+              <p id="erro-nome" class="campo-erro" role="alert" hidden></p>
             </div>
             <div class="formulario__campo formulario__campo--senha">
               <label for="cadastro-senha">Senha</label>
@@ -72,6 +74,7 @@
                 Mostrar senha
               </button>
               <p id="dica-senha" class="formulario__dica">Mínimo de 8 caracteres.</p>
+              <p id="erro-senha" class="campo-erro" role="alert" hidden></p>
             </div>
 
             <div class="formulario__aceite">
@@ -81,7 +84,7 @@
                 Ler os termos
               </button>
             </div>
-
+            <p id="erro-termos" class="campo-erro" role="alert" hidden></p>
             <p id="erro-cadastro" class="formulario__erro" role="alert" hidden></p>
             <button type="submit" class="botao-principal">Criar conta</button>
           </form>
