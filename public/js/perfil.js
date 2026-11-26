@@ -31,3 +31,12 @@ let estadoAtual = {
   foto: '',
   plano: 'essencial'
 };
+
+//FUNÇÃO MOSTRAR AVISO PARA FEEDBACK VISUAL
+
+function mostrarAviso(mensagem, tipo = 'info') {
+  if (!avisoEl) return;
+  avisoEl.textContent = mensagem;
+  avisoEl.dataset.tipo = tipo;
+  avisoEl.hidden = !mensagem;
+}
