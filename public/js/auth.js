@@ -14,6 +14,17 @@ if (formularioCadastro) {
   const botaoTermos = formularioCadastro.querySelector('.botao-termos');
   const janelaTermos = document.getElementById('janela-termos');
   const erroCadastro = document.getElementById('erro-cadastro');
+  const sucessoCadastro = document.getElementById('sucesso-cadastro');
+  const botaoCadastro = formularioCadastro.querySelector('.botao-principal');
+
+  // Estado de carregamento do cadastro
+  function definirCarregamento(carregando) {
+    botaoCadastro.disabled = carregando;
+
+    botaoCadastro.textContent = carregando ? 'Criando conta...' : 'Criar conta';
+
+    formularioCadastro.setAttribute('aria-busy', String(carregando));
+  }
 
   // Mostrar e ocultar senha
   botaoSenha.addEventListener('click', () => {
@@ -130,9 +141,14 @@ if (formularioCadastro) {
   // Envio do formulário
   formularioCadastro.addEventListener('submit', (evento) => {
     evento.preventDefault();
+    if (botaoCadastro.disabled) {
+      return;
+    }
 
     erroCadastro.hidden = true;
     erroCadastro.textContent = '';
+    sucessoCadastro.hidden = true;
+    sucessoCadastro.textContent = '';
 
     const emailValido = validarEmail();
     const nomeValido = validarNome();

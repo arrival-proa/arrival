@@ -1484,3 +1484,25 @@ body.pagina-acesso:has(.acesso--invertido) {
     margin-top: -0.75rem;
   }
 }
+
+/* ==================== CADASTRO - CARREGAMENTO ==================== */
+
+.acesso--invertido .botao-principal:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* ==================== CADASTRO - SUCESSO ==================== */
+
+.acesso--invertido .formulario__sucesso {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #4ade80;
+  text-align: center;
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__sucesso {
+  color: #15803d;
+}
