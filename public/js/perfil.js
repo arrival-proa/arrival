@@ -159,3 +159,15 @@ botaoMostrarSenha?.addEventListener('click', () => {
   botaoMostrarSenha.setAttribute('aria-pressed', String(mostrar));
   botaoMostrarSenha.setAttribute('aria-label', mostrar ? 'Ocultar senha' : 'Mostrar senha');
 });
+
+//a abertura e o fechamento do modal de termos
+
+botaoTermos?.addEventListener('click', () => {
+  janelaTermos?.showModal?.();
+});
+
+janelaTermos?.addEventListener('click', (event) => {
+  if (event.target === janelaTermos) {
+    janelaTermos.close();
+  }
+});
