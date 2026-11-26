@@ -148,3 +148,14 @@ arquivoInput?.addEventListener('change', async () => {
     mostrarAviso('Não foi possível ler essa imagem.', 'erro');
   }
 });
+
+
+// Adiciona funcionalidade de mostrar senha
+
+botaoMostrarSenha?.addEventListener('click', () => {
+  if (!senhaInput) return;
+  const mostrar = senhaInput.type === 'password';
+  senhaInput.type = mostrar ? 'text' : 'password';
+  botaoMostrarSenha.setAttribute('aria-pressed', String(mostrar));
+  botaoMostrarSenha.setAttribute('aria-label', mostrar ? 'Ocultar senha' : 'Mostrar senha');
+});
