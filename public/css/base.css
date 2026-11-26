@@ -7,6 +7,7 @@
 
 :root {
   color-scheme: dark;
+
   --fonte-título: 'Outfit', sans-serif;
   --fonte-texto: 'Plus Jakarta Sans', sans-serif;
 
@@ -16,6 +17,10 @@
 
   --cor-título: #e1e4f8;
   --cor-texto: #e1e4f8;
+
+  --cor-borda: #9690ad;
+  --cor-placeholder: #b5b2c0;
+  --cor-link: #a28cf8;
 
   --transicao: 180ms ease;
   --largura-menu: 76px;
