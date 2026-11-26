@@ -42,6 +42,7 @@
                 autocomplete="email"
                 placeholder="Digite seu endereço de email"
                 required
+                aria-describedby="erro-email"
               />
               <p id="erro-email" class="campo-erro" role="alert" hidden></p>
             </div>
@@ -55,6 +56,7 @@
                 maxlength="80"
                 placeholder="Digite seu nome completo"
                 required
+                aria-describedby="erro-nome"
               />
               <p id="erro-nome" class="campo-erro" role="alert" hidden></p>
             </div>
@@ -68,7 +70,7 @@
                 minlength="8"
                 placeholder="Defina sua senha"
                 required
-                aria-describedby="dica-senha"
+                aria-describedby="dica-senha erro-senha"
               />
               <button type="button" class="mostrar-senha" aria-controls="cadastro-senha" aria-pressed="false">
                 Mostrar senha
@@ -78,7 +80,13 @@
             </div>
 
             <div class="formulario__aceite">
-              <input type="checkbox" id="cadastro-termos" name="termos" required />
+              <input
+                type="checkbox"
+                id="cadastro-termos"
+                name="termos"
+                required
+                aria-describedby="erro-termos"
+              />
               <label for="cadastro-termos">Li e aceito os termos de uso e a política de privacidade</label>
               <button type="button" class="botao-termos" aria-haspopup="dialog" aria-controls="janela-termos">
                 Ler os termos
