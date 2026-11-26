@@ -157,7 +157,7 @@
   border-radius: 999px;
   padding: 0 0.5rem 0 0.75rem;
   box-shadow: 0 0.0625rem 0.25rem #0c0a13;
-  transition: background 0.2s;
+  transition: background-color 0.2s ease;
   height: 2.125rem;
 }
 
@@ -180,6 +180,10 @@
   height: 0.9375rem;
 }
 
+.conversa span:first-child svg path {
+  transition: stroke 0.2s ease;
+}
+
 /* Link com título da conversa */
 .conversa__link {
   flex: 1;
@@ -197,10 +201,14 @@
   text-overflow: ellipsis;
 }
 
-/* Destaque para a conversa ativa */
-.conversa__link[aria-current='page'] {
+/* Conversa selecionada: apenas roxo */
+.conversa.selecionada .conversa__link {
   color: #a58cf7;
-  font-family: 700;
+  font-weight: 600;
+}
+
+.conversa.selecionada span:first-child svg path {
+  stroke: #a58cf7;
 }
 
 /* Botão de Mais Opções (...) */
@@ -214,7 +222,17 @@
   background: transparent;
   flex-shrink: 0;
   padding: 0;
-  transition: background 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* Aparecem apenas no hover ou com o menu desse item aberto */
+.conversa:hover .conversa__mais,
+.conversa:focus-within .conversa__mais,
+.conversa:has(.conversa__mais[aria-expanded="true"]) .conversa__mais {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Centraliza o span e o SVG de três pontinhos */
