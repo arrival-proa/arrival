@@ -37,7 +37,13 @@ body{
     background: var(--cor-principal);
     color: var(--cor-texto);
     display: flex;
-    min-height: 100vh;
+    height: 100dvh; 
+    overflow: hidden
+}
+
+main {
+    flex: 1; 
+    overflow-y: auto;
 }
 
 h1, h2, h3 {

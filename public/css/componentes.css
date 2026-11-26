@@ -195,12 +195,17 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: color var(--transicao, 180ms ease);
 }
 
-/* Destaque para a conversa ativa */
+/* Roxo apenas ao interagir ou quando marcada como ativa/atual */
+.conversa__link:hover,
+.conversa__link:focus-visible,
+.conversa__link:active,
+.conversa__link.ativa,
 .conversa__link[aria-current="page"] {
-    color: #a58cf7;
-    font-family: 700;
+  color: #a58cf7;
+  font-weight: 700;
 }
 
 /* Botão de Mais Opções (...) */
@@ -226,6 +231,60 @@
 
 .conversa__mais:hover {
     background-color: #2b2451;
+}
+
+/* Garante que o item tenha referência para o menu */
+.conversa {
+  position: relative;
+}
+
+/* Janelinha flutuante de opções da conversa */
+.conversa__opcoes {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  z-index: 80;
+  min-width: 145px;
+  padding: 6px;
+  border-radius: 12px;
+  background-color: #1c1833;
+  border: 1px solid rgba(165, 140, 247, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conversa__opcoes[hidden] {
+  display: none;
+}
+
+.conversa__opcoes button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--cor-texto, #E1E4F8);
+  text-align: left;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.conversa__opcoes button:hover,
+.conversa__opcoes button:focus-visible {
+  background-color: #2b2451;
+  color: #ffffff;
+}
+
+.conversa__opcoes button svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: #a58cf7;
 }
 
 /* Menu dropdown a se desenvolver... */
@@ -827,5 +886,7 @@
     text-align: center;
   }
 }
+
+
 
 
