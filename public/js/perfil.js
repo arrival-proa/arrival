@@ -74,5 +74,23 @@ function atualizarPlano(plano = 'essencial') {
   if (secaoCrewEl) secaoCrewEl.hidden = chave !== 'crew';
 }
 
+// A função carregarEstadoLocal() lê os dados salvos no localStorage quando a tela abre e preenche os campos do formulário, a foto, a sidebar e o plano com o estado atual.
 
+function carregarEstadoLocal() {
+  try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE_STORAGE) || 'null');
+    if (salvo) {
+      estadoAtual = { ...estadoAtual, ...salvo };
+    }
+  } catch (err) {
+    console.warn('Não foi possível ler o perfil local:', err);
+  }
+
+  if (nomeInput && estadoAtual.nome) nomeInput.value = estadoAtual.nome;
+  if (emailInput && estadoAtual.email) emailInput.value = estadoAtual.email;
+  if (fotoImg && estadoAtual.foto) fotoImg.src = estadoAtual.foto;
+
+  atualizarSidebar(estadoAtual);
+  atualizarPlano(estadoAtual.plano);
+}
 
