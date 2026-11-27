@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  align-items: center;
+  align-items: flex-start;
   z-index: 40;
   gap: 1rem;
 
@@ -23,10 +23,9 @@
   border-radius: 0 1.375rem 1.375rem 0;
   box-shadow: 0.25rem 0 1.5rem rgba(0, 0, 0, 0.28);
 
-  transition:
-    width 0.35s cubic-bezier(0.65, 0, 0.25, 1),
-    padding 0.35s cubic-bezier(0.65, 0, 0.25, 1),
-    border-radius 0.35s ease;
+  --anim: 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: width var(--anim);
+  will-change: width;
 }
 
 /* desliga animações só durante a restauração do estado */
@@ -482,13 +481,17 @@
 }
 
 /* ================================
-       SIDE BAR FECHADA 
+   SIDE BAR FECHADA / ABERTA
+   (com transições)
 ================================= */
 
-/* Oculta nome da logo grande */
-.menu-lateral:not(.aberto) .logo-completa {
-  display: none;
+.menu-lateral.aberto {
+  width: 19.875rem;
 }
+
+/* ---------- Logo e topo ---------- */
+
+.menu-lateral:not(.aberto) .logo-completa { display: none; }
 
 .menu-lateral:not(.aberto) .logo-compacta {
   display: block;
@@ -497,97 +500,7 @@
   object-fit: contain;
 }
 
-/* Ações, ícones centralizados */
-.menu-lateral:not(.aberto) .menu-lateral__acoes ul {
-  align-items: center;
-  gap: 1.1875rem;
-}
-
-.menu-lateral:not(.aberto) .menu-lateral__acoes ul li {
-  width: 2.375rem;
-  height: 2.375rem;
-  border-radius: 50%;
-}
-
-.menu-lateral:not(.aberto) .menu-lateral__acoes ul li button,
-.menu-lateral:not(.aberto) .menu-lateral__acoes ul li a {
-  justify-content: center;
-  padding: 0;
-  gap: 0;
-}
-
-/* Esconde o texto*/
-
-.menu-lateral:not(.aberto) .menu-lateral__acoes .label,
-.menu-lateral:not(.aberto) .menu-lateral__acoes a span:not(.ic),
-.menu-lateral:not(.aberto) #label {
-  display: none;
-}
-
-/* Esconde conversas recentes */
-.menu-lateral:not(.aberto) .menu-lateral__conversas {
-  display: none;
-}
-
-/* Rodapé(Perfil) - sidebar fechada */
-.menu-lateral:not(.aberto) .menu-lateral__usuario {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-right: 0;
-  margin-left: 0;
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.menu-lateral:not(.aberto) .usuario {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.menu-lateral:not(.aberto) .usuario__foto {
-  margin: 0 auto;
-}
-
-.menu-lateral:not(.aberto) .usuario__nome,
-.menu-lateral:not(.aberto) .usuario__plano,
-.menu-lateral:not(.aberto) #botao-sair {
-  display: none;
-}
-
-/* Login com a sidebar fechada: só o ícone, em círculo */
-.menu-lateral:not(.aberto) .botao-login {
-  flex: none;
-  width: 2.375rem;
-  height: 2.375rem;
-  padding: 0;
-}
-
-.menu-lateral:not(.aberto) .botao-login__texto {
-  display: none;
-}
-
-/* ========================================== */
-
-.menu-lateral:not(.aberto) .botao-login {
-  flex: none;
-  width: 2.375rem;
-  height: 2.375rem;
-}
-
-.menu-lateral:not(.aberto) .botao-login__texto {
-  display: none;
-}
-
-/* Estado aberto */
-
-.menu-lateral.aberto {
-  width: 19.875rem;
-  align-items: stretch;
-}
+.menu-lateral.aberto .logo-compacta { display: none; }
 
 .menu-lateral.aberto .menu-lateral__topo {
   flex-direction: row;
@@ -596,19 +509,172 @@
   padding: 0.875rem 1.25rem;
 }
 
-.menu-lateral.aberto .logo-compacta {
-  display: none;
+/* O topo muda de coluna para linha (não dá para animar), então usamos um fade */
+@keyframes sidebar-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.menu-lateral.aberto .menu-lateral__acoes ul li {
+.menu-lateral.animando .logo-completa,
+.menu-lateral.animando .logo-compacta,
+.menu-lateral.animando .menu-lateral__alternar {
+  animation: sidebar-fade 0.35s ease 0.1s both;
+}
+
+/* ---------- Ações (Novo chat, Aparência, Histórico) ---------- */
+
+.menu-lateral__acoes ul {
+  align-items: flex-start;
+  padding: 0 0 0 0.875rem;
+  transition: padding var(--anim);
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul {
+  padding-left: 0.6875rem;
+}
+
+.menu-lateral__acoes ul li {
   width: 17.125rem;
   height: 2.9375rem;
-  border-radius: 999px;
+  transition:
+    background-color 0.2s,
+    width var(--anim),
+    height var(--anim);
 }
 
-.menu-lateral.aberto .menu-lateral__usuario {
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li {
+  width: 2.375rem;
+  height: 2.375rem;
+}
+
+.menu-lateral__acoes ul li button,
+.menu-lateral__acoes ul li a {
+  transition: padding var(--anim), gap var(--anim);
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li button,
+.menu-lateral:not(.aberto) .menu-lateral__acoes ul li a {
+  padding: 0 0 0 0.4375rem;
+  gap: 0;
+}
+
+/* Textos: somem com fade + encolhem, em vez de display: none */
+.menu-lateral__acoes .label,
+.menu-lateral__acoes #label {
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.25s ease 0.12s, max-width var(--anim);
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__acoes .label,
+.menu-lateral:not(.aberto) .menu-lateral__acoes #label {
+  max-width: 0;
+  opacity: 0;
+  transition: opacity 0.12s ease, max-width var(--anim);
+}
+
+/* ---------- Conversas recentes ---------- */
+
+.menu-lateral__conversas {
+  opacity: 1;
+  transition: opacity 0.25s ease 0.15s, visibility 0s linear 0s;
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__conversas {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease, visibility 0s linear 0.12s;
+}
+
+/* ---------- Rodapé (login / perfil) ---------- */
+
+.menu-lateral__usuario {
   width: 17.125rem;
-  border-radius: 999px;
+  height: 2.9375rem;
+  overflow: hidden;
+  transition:
+    width var(--anim),
+    height var(--anim),
+    margin-left var(--anim),
+    padding var(--anim),
+    box-shadow var(--anim);
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__usuario {
+  width: 2.375rem;
+  height: 2.375rem;
+  margin-left: 0.6875rem;
+  padding: 0 0 0 0.125rem;
+  box-shadow: none;
+}
+
+.menu-lateral:not(.aberto) .menu-lateral__usuario:not([data-logado="true"]) {
+  padding: 0;
+}
+
+/* Nome e plano: fade */
+.usuario__nome,
+.usuario__plano {
+  transition: opacity 0.25s ease 0.12s;
+}
+
+.menu-lateral:not(.aberto) .usuario__nome,
+.menu-lateral:not(.aberto) .usuario__plano {
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+/* Botão de sair: encolhe e some */
+#botao-sair {
+  transition:
+    width var(--anim),
+    margin-left var(--anim),
+    opacity 0.2s ease,
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.menu-lateral:not(.aberto) #botao-sair {
+  width: 0;
+  margin-left: -0.5rem; /* compensa o gap do rodapé */
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Botão "Fazer login": o texto some e sobra o ícone */
+.botao-login {
+  transition: gap var(--anim), filter 0.2s, transform 0.2s;
+}
+
+.menu-lateral:not(.aberto) .botao-login { gap: 0; }
+
+.botao-login__texto {
+  max-width: 8rem;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.25s ease 0.12s, max-width var(--anim);
+}
+
+.menu-lateral:not(.aberto) .botao-login__texto {
+  max-width: 0;
+  opacity: 0;
+  transition: opacity 0.12s ease, max-width var(--anim);
+}
+
+/* ---------- Quem prefere menos movimento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-lateral,
+  .menu-lateral * {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    animation: none !important;
+  }
 }
 
 
