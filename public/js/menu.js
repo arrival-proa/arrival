@@ -222,11 +222,24 @@ botaoNovoChat?.addEventListener("click", () => {
   limparSelecaoConversas();
 });
 
+/* ---------- Estado de login ---------- */
+
+// Troque por sua verificação real (token, sessão, API...)
+function usuarioEstaLogado() {
+  return lerStorage("arrival_logado") === "true";
+}
+
+function atualizarRodapeUsuario() {
+  const rodape = document.querySelector(".menu-lateral__usuario");
+  rodape?.setAttribute("data-logado", String(usuarioEstaLogado()));
+}
+
 /* ---------- Início ---------- */
 
 function iniciarMenu() {
   carregarEstadoSidebar();
   sincronizarConversaAtiva();
+  atualizarRodapeUsuario();
 }
 
 if (document.readyState === "loading") {
