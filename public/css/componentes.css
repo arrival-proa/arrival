@@ -337,6 +337,50 @@
 
 /* Link que agrupa foto, nome e plano */
 
+/* ---------- Estado: deslogado / logado ---------- */
+
+/* Deslogado (padrão): só o botão de login */
+.menu-lateral .menu-lateral__usuario:not([data-logado="true"]) .usuario,
+.menu-lateral .menu-lateral__usuario:not([data-logado="true"]) #botao-sair {
+  display: none;
+}
+
+/* Logado: esconde o botão de login */
+.menu-lateral .menu-lateral__usuario[data-logado="true"] .botao-login {
+  display: none;
+}
+
+/* Deslogado: o botão ocupa o rodapé inteiro, sem a borda escura */
+.menu-lateral__usuario:not([data-logado="true"]) {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Botão "Fazer login" */
+.botao-login {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  font-family: var(--fonte-texto);
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #ffffff;
+  background: linear-gradient(90deg, #a28cf8 0%, #6d50de 100%);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.botao-login:hover { filter: brightness(1.1); }
+.botao-login:active { transform: scale(0.98); }
+.botao-login:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+.botao-login svg { flex-shrink: 0; }
+
+/* =============================== */
+
 .usuario {
   flex: 1;
   min-width: 0;
@@ -495,6 +539,30 @@
   display: none;
 }
 
+/* Login com a sidebar fechada: só o ícone, em círculo */
+.menu-lateral:not(.aberto) .botao-login {
+  flex: none;
+  width: 2.375rem;
+  height: 2.375rem;
+  padding: 0;
+}
+
+.menu-lateral:not(.aberto) .botao-login__texto {
+  display: none;
+}
+
+/* ========================================== */
+
+.menu-lateral:not(.aberto) .botao-login {
+  flex: none;
+  width: 2.375rem;
+  height: 2.375rem;
+}
+
+.menu-lateral:not(.aberto) .botao-login__texto {
+  display: none;
+}
+
 /* Estado aberto */
 
 .menu-lateral.aberto {
@@ -523,6 +591,7 @@
   width: 17.125rem;
   border-radius: 999px;
 }
+
 
 /* Em telas maiores (desktop), empurra o conteúdo principal suavemente */
 @media (min-width: 1024px) {
