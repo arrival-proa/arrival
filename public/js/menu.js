@@ -32,10 +32,19 @@ function removerStorage(chave) {
 
 /* ---------- Estado da sidebar ---------- */
 
+let timerAnimacao;
+
 function aplicarEstadoSidebar(aberta, { animar = true } = {}) {
   if (!sidebar) return;
 
   if (!animar) sidebar.classList.add("sem-transicao");
+
+  if (animar) {
+    sidebar.classList.add("animando");
+    clearTimeout(timerAnimacao);
+    timerAnimacao = setTimeout(() => sidebar.classList.remove("animando"), 600);
+  }
+
 
   sidebar.classList.toggle("aberto", aberta);
   botaoAlternar?.setAttribute("aria-expanded", String(aberta));
