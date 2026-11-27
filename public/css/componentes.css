@@ -36,7 +36,9 @@
 }
 
 /* o topo não é clicável, só o botão */
-.menu-lateral__alternar { cursor: pointer; }
+.menu-lateral__alternar { 
+  cursor: pointer; 
+}
 
 
 .menu-lateral__topo {
@@ -154,7 +156,7 @@
   gap: 0.9375rem;
   padding: 0 0.875rem;
   padding-right: 0.125rem;
-  width: 17.125rem;
+  width: 18rem;
 }
 
 /* Cada item da lista de conversa */
