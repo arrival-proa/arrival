@@ -55,7 +55,12 @@ body {
 }
 
 body {
-  background: var(--cor-principal);
+  background-color: #0a0716; 
+  background-image: url('../assets/img/background-dark-desktop.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: var(--cor-texto);
   display: flex;
   min-height: 100vh;
