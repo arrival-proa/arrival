@@ -621,9 +621,10 @@
 /* Campo de senha e botão de mostrar e ocultar */
 .formulario__campo--senha input {
   height: 3.75rem;
-  line-height: 3.75rem;
-  padding-top: 0.825rem;
+  line-height: normal;
+  padding-top: 0;
   padding-bottom: 0;
+  padding-right: 3.25rem;
 }
 
 .formulario__campo--senha input::placeholder {
