@@ -32,7 +32,7 @@
         <section class="acesso__bloco" aria-labelledby="titulo-cadastro">
           <h1 id="titulo-cadastro">Cadastre-se</h1>
 
-          <form id="formulario-cadastro" class="formulario" action="#" method="post">
+          <form id="formulario-cadastro" class="formulario" action="#" method="post" novalidate>
             <div class="formulario__campo">
               <label for="cadastro-email">Email</label>
               <input
@@ -42,7 +42,9 @@
                 autocomplete="email"
                 placeholder="Digite seu endereço de email"
                 required
+                aria-describedby="erro-email"
               />
+              <p id="erro-email" class="campo-erro" role="alert" hidden></p>
             </div>
             <div class="formulario__campo">
               <label for="cadastro-nome">Nome</label>
@@ -54,7 +56,9 @@
                 maxlength="80"
                 placeholder="Digite seu nome completo"
                 required
+                aria-describedby="erro-nome"
               />
+              <p id="erro-nome" class="campo-erro" role="alert" hidden></p>
             </div>
             <div class="formulario__campo formulario__campo--senha">
               <label for="cadastro-senha">Senha</label>
@@ -66,23 +70,31 @@
                 minlength="8"
                 placeholder="Defina sua senha"
                 required
-                aria-describedby="dica-senha"
+                aria-describedby="dica-senha erro-senha"
               />
               <button type="button" class="mostrar-senha" aria-controls="cadastro-senha" aria-pressed="false">
                 Mostrar senha
               </button>
               <p id="dica-senha" class="formulario__dica">Mínimo de 8 caracteres.</p>
+              <p id="erro-senha" class="campo-erro" role="alert" hidden></p>
             </div>
 
             <div class="formulario__aceite">
-              <input type="checkbox" id="cadastro-termos" name="termos" required />
+              <input
+                type="checkbox"
+                id="cadastro-termos"
+                name="termos"
+                required
+                aria-describedby="erro-termos"
+              />
               <label for="cadastro-termos">Li e aceito os termos de uso e a política de privacidade</label>
               <button type="button" class="botao-termos" aria-haspopup="dialog" aria-controls="janela-termos">
                 Ler os termos
               </button>
             </div>
-
+            <p id="erro-termos" class="campo-erro" role="alert" hidden></p>
             <p id="erro-cadastro" class="formulario__erro" role="alert" hidden></p>
+            <p id="sucesso-cadastro" class="formulario__sucesso" role="status" hidden></p>
             <button type="submit" class="botao-principal">Criar conta</button>
           </form>
 
