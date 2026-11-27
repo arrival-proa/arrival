@@ -8,23 +8,48 @@ const botaoAlternar = document.querySelector(".menu-lateral__alternar");
 const listaConversas = document.getElementById("lista-conversas");
 const botaoNovoChat = document.getElementById("botao-novo-chat");
 
-function aplicarEstadoSidebar(aberta) {
+// LocalStorage 
+
+function lerStorage(chave) {
+  try { return localStorage.getItem(chave); } catch { return null; }
+}
+function salvarStorage(chave, valor) {
+  try { localStorage.setItem(chave, valor); } catch {}
+}
+function removerStorage(chave) {
+  try { localStorage.removeItem(chave); } catch {}
+}
+
+/* ---------- Estado da sidebar ---------- */
+
+function aplicarEstadoSidebar(aberta, { animar = true } = {}) {
   if (!sidebar) return;
+
+  if (!animar) sidebar.classList.add("sem-transicao");
+
   sidebar.classList.toggle("aberto", aberta);
   botaoAlternar?.setAttribute("aria-expanded", String(aberta));
+
+  if (!animar) {
+    void sidebar.offsetWidth; // força reflow antes de religar a transição
+    sidebar.classList.remove("sem-transicao");
+  }
+
+  if (!aberta) fecharOpcoes();
 }
 
 function carregarEstadoSidebar() {
   if (!sidebar || !botaoAlternar) return;
-  const salvo = localStorage.getItem(CHAVE_SIDEBAR);
-  const aberta = salvo === "true";
-  aplicarEstadoSidebar(aberta);
+  const aberta = lerStorage(CHAVE_SIDEBAR) === "true";
+  aplicarEstadoSidebar(aberta, { animar: false }); // sem animação ao carregar
 }
+
+/* ---------- Conversa selecionada ---------- */
 
 function extrairIdConversa(href) {
   if (!href) return null;
   try {
-    const url = new URL(href, window.location.origin);
+    const url = new URL(href, window.location.href);
     return url.searchParams.get("conversa");
   } catch {
     return null;
@@ -62,29 +87,107 @@ function sincronizarConversaAtiva() {
 
   if (idDaUrl) {
     const encontrou = destacarConversaPorId(idDaUrl);
-    if (encontrou) {
-      localStorage.setItem(CHAVE_CONVERSA_SELECIONADA, idDaUrl);
-    }
+    if (encontrou) salvarStorage(CHAVE_CONVERSA_SELECIONADA, idDaUrl);
     return;
   }
 
-  const idSalvo = localStorage.getItem(CHAVE_CONVERSA_SELECIONADA);
-  if (idSalvo) {
-    destacarConversaPorId(idSalvo);
+  const idSalvo = lerStorage(CHAVE_CONVERSA_SELECIONADA);
+  if (idSalvo) destacarConversaPorId(idSalvo);
+}
+
+/* ---------- Menu de opções (...) ---------- */
+
+function fecharOpcoes() {
+  document
+    .querySelectorAll('.conversa__mais[aria-expanded="true"]')
+    .forEach((botao) => {
+      botao.setAttribute("aria-expanded", "false");
+      document
+        .getElementById(botao.getAttribute("aria-controls"))
+        ?.setAttribute("hidden", "");
+    });
+}
+
+function abrirOpcoes(botao) {
+  const opcoes = document.getElementById(botao.getAttribute("aria-controls"));
+  if (!opcoes) return;
+
+  opcoes.removeAttribute("hidden");
+  botao.setAttribute("aria-expanded", "true");
+
+  // position: fixed, para não ser cortado pelo overflow da sidebar/lista
+  const r = botao.getBoundingClientRect();
+  const alturaMenu = opcoes.offsetHeight;
+  const cabeEmbaixo = r.bottom + 4 + alturaMenu < window.innerHeight;
+
+  opcoes.style.left = `${r.left - 6}px`;
+  opcoes.style.top = cabeEmbaixo
+    ? `${r.bottom + 4}px`
+    : `${r.top - alturaMenu - 4}px`;
+
+  opcoes.querySelector("button")?.focus();
+}
+
+function executarAcao(acao, item) {
+  const link = item.querySelector(".conversa__link");
+  const href = link?.getAttribute("href");
+
+  switch (acao) {
+    case "renomear": {
+      const novo = prompt("Novo nome da conversa:", link.textContent.trim());
+      if (novo?.trim()) link.textContent = novo.trim();
+      // TODO: salvar o novo nome onde guardar as conversas
+      break;
+    }
+    case "compartilhar": {
+      const url = new URL(href, window.location.href).href;
+      navigator.clipboard?.writeText(url);
+      break;
+    }
+    case "excluir": {
+      if (confirm("Excluir esta conversa?")) {
+        const id = extrairIdConversa(href);
+        if (id === lerStorage(CHAVE_CONVERSA_SELECIONADA)) {
+          removerStorage(CHAVE_CONVERSA_SELECIONADA);
+        }
+        item.remove();
+        // TODO: remover também de onde guardar as conversas
+      }
+      break;
+    }
   }
 }
+
+/* ---------- Eventos ---------- */
 
 botaoAlternar?.addEventListener("click", () => {
   if (!sidebar) return;
   const vaiAbrir = !sidebar.classList.contains("aberto");
   aplicarEstadoSidebar(vaiAbrir);
-  localStorage.setItem(CHAVE_SIDEBAR, String(vaiAbrir));
+  salvarStorage(CHAVE_SIDEBAR, String(vaiAbrir));
 });
 
 listaConversas?.addEventListener("click", (event) => {
-  const clicouNoMenu = event.target.closest(".conversa__mais, .conversa__opcoes");
-  if (clicouNoMenu) return;
+  // 1) botão dos três pontinhos
+  const botaoMais = event.target.closest(".conversa__mais");
+  if (botaoMais) {
+    const jaAberto = botaoMais.getAttribute("aria-expanded") === "true";
+    fecharOpcoes();
+    if (!jaAberto) abrirOpcoes(botaoMais);
+    return;
+  }
 
+  // 2) item do menu (Renomear / Compartilhar / Excluir)
+  const botaoAcao = event.target.closest("[data-acao]");
+  if (botaoAcao) {
+    executarAcao(botaoAcao.dataset.acao, botaoAcao.closest(".conversa"));
+    fecharOpcoes();
+    return;
+  }
+
+  if (event.target.closest(".conversa__opcoes")) return;
+
+  // 3) clique na conversa
   const item = event.target.closest(".conversa");
   if (!item) return;
 
@@ -92,15 +195,34 @@ listaConversas?.addEventListener("click", (event) => {
   const idConversa = extrairIdConversa(href);
 
   if (idConversa) {
-    localStorage.setItem(CHAVE_CONVERSA_SELECIONADA, idConversa);
+    salvarStorage(CHAVE_CONVERSA_SELECIONADA, idConversa);
     destacarConversaPorId(idConversa);
   }
 });
 
+
+
+// Fecha o menu de opções ao clicar fora, com Esc ou ao rolar a lista
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".conversa__mais, .conversa__opcoes")) fecharOpcoes();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  const aberto = document.querySelector('.conversa__mais[aria-expanded="true"]');
+  fecharOpcoes();
+  aberto?.focus();
+});
+
+listaConversas?.addEventListener("scroll", fecharOpcoes);
+window.addEventListener("resize", fecharOpcoes);
+
 botaoNovoChat?.addEventListener("click", () => {
-  localStorage.removeItem(CHAVE_CONVERSA_SELECIONADA);
+  removerStorage(CHAVE_CONVERSA_SELECIONADA);
   limparSelecaoConversas();
 });
+
+/* ---------- Início ---------- */
 
 function iniciarMenu() {
   carregarEstadoSidebar();
@@ -112,6 +234,4 @@ if (document.readyState === "loading") {
 } else {
   iniciarMenu();
 }
-
-
 
