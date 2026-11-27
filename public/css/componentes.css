@@ -596,12 +596,12 @@
 .formulario__campo input {
   width: 100%;
   height: 3.75rem;
-  padding-left: 3.7rem;
-  padding-right: 1rem;
+  padding: 0 1rem 0 3.7rem;   /* sem padding vertical: o texto fica no meio */
   border-radius: 999px;
   background-color: #1c192b;
   color: #aeaeae;
-  font-size: 0.92rem;
+  font-size: 1rem;
+  line-height: normal;
   outline: none;
   border: none;
   box-shadow: 0.125rem 0 0.75rem #0c0a13;
@@ -614,16 +614,12 @@
 
 .formulario__campo input::placeholder {
   color: #aeaeae;
-  font-size: 1.125rem;
+  font-size: 1rem;            /* mesmo tamanho do texto digitado */
   opacity: 1;
 }
 
 /* Campo de senha e botão de mostrar e ocultar */
 .formulario__campo--senha input {
-  height: 3.75rem;
-  line-height: normal;
-  padding-top: 0;
-  padding-bottom: 0;
   padding-right: 3.25rem;
 }
 
