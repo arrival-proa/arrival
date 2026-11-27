@@ -648,7 +648,7 @@
   height: 1rem;
 }
 
-.formulario__campo__dica {
+.formulario__dica {
   font-size: 0.75rem;
   color: var(--cor-texto);
   margin: 0;
@@ -685,7 +685,7 @@
 }
 
 .botao-termos span,
-.perfil__feedback sapn svg {
+.perfil__feedback span svg {
   width: 0.85rem;
   height: 0.85rem;
   display: block;
@@ -767,9 +767,9 @@
   font-weight: 600;
   white-space: nowrap;
   transition:
-    backgound-color 0.2s,
-    color 0.2s;
-  border-color: 0.2s;
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .perfil__plano a:hover {
