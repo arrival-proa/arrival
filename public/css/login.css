@@ -1,0 +1,339 @@
+/* ======================================
+    ARRIVAL - LOGIN / ACESSO
+========================================== */
+
+/* Garante que [hidden] funcione mesmo com display:flex nos blocos */
+[hidden] {
+  display: none !important;
+}
+
+/* Fonte do texto nesta página: Poppins (já carregada no HTML).
+   Sobrescreve a variável só dentro de .acesso, então p, a e button
+   (que usam var(--fonte-texto) no base.css) passam a usar Poppins. */
+.acesso {
+  --fonte-texto: "Poppins", "Plus Jakarta Sans", sans-serif;
+  font-family: var(--fonte-texto);
+}
+
+/* ---------- Layout geral ---------- */
+.acesso {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--cor-secundaria);
+}
+
+/* Coluna da esquerda */
+.acesso__formularios {
+  flex: 0 0 46%;
+  min-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 3rem;
+}
+
+/* Coluna da direita */
+.acesso__ilustracao {
+  flex: 1;
+  border-radius: 2rem 0 0 2rem;
+  background-color: var(--cor-principal);
+  background-image: url("../assets/img/background-dark-desktop.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.acesso__ilustracao img {
+  width: min(60%, 450px);
+  height: auto;
+}
+
+/* ---------- Símbolo ---------- */
+.acesso__simbolo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 22.5rem;
+  margin: 0 auto 2.5rem;
+}
+
+.acesso__simbolo img {
+  display: block;
+  width: 3.5rem;
+  height: auto;
+}
+
+/* ---------- Bloco de conteúdo ---------- */
+
+.acesso__bloco {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 22.5rem;
+  margin: 0 auto;
+}
+
+.acesso__bloco h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-título);
+  text-align: left;
+  margin-bottom: 0.75rem;
+  
+}
+
+.acesso__bloco > p {
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--cor-texto);
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Subtítulo alinhado à esquerda, como o título */
+.acesso__bloco h1,
+#titulo-entrar + p,
+#titulo-recuperar + p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Formulário ---------- */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Cada campo (email, senha...). Os 3 seletores garantem que funcione
+   mesmo que a classe do HTML seja diferente. */
+.formulario__campo,
+.formulario__campo--senha,
+.formulario > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.formulario label {
+  display: block;
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--cor-texto);
+}
+
+.formulario input {
+  display: block;
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 1rem;
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  background-color: transparent;
+  border: 1px solid var(--cor-borda);
+  border-radius: 5rem;
+  outline: none;
+  opacity: 1;
+  transition:
+    border-color var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.formulario input::placeholder {
+  color: var(--cor-placeholder);
+  opacity: 1;
+}
+
+.formulario input:focus {
+  border-color: var(--cor-link);
+  box-shadow: 0 0 0 3px rgba(162, 140, 248, 0.2);
+}
+
+/* Evita o fundo azul/cinza do autofill do navegador */
+.formulario input:-webkit-autofill {
+  -webkit-text-fill-color: var(--cor-texto);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Campo de senha: espaço para o ícone do olho */
+.formulario input[type="password"],
+.formulario input[type="text"][id$="senha"] {
+  padding-right: 3rem;
+}
+
+/* Botão "Mostrar senha": só o ícone aparece */
+.mostrar-senha {
+  position: absolute;
+  right: 1rem;
+  /* label (1.25rem) + margem (0.5rem) + metade do input (1.375rem) */
+  top: 3.125rem;
+  transform: translateY(-50%);
+
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  font-size: 0;
+  color: transparent;
+  overflow: hidden;
+
+  background-color: var(--cor-icones);
+  -webkit-mask: url("../assets/icones/mostrar-senha.svg") center / contain no-repeat;
+  mask: url("../assets/icones/mostrar-senha.svg") center / contain no-repeat;
+  border-radius: 0;
+  opacity: 0.8;
+  transition: opacity var(--transicao);
+}
+
+.mostrar-senha:hover,
+.mostrar-senha[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.formulario__dica {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  color: var(--cor-placeholder);
+  text-align: left;
+}
+
+.formulario__erro {
+  font-size: 0.8rem;
+  color: #ff8a8a;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+/* ---------- Botão principal ---------- */
+.botao-principal {
+  width: 100%;
+  height: 2.5rem;
+  margin: 0.25rem 0 1.25rem;
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  background-image: linear-gradient(90deg, #a28cf8, #694bd8);
+  border: none;
+  border-radius: 5rem;
+  cursor: pointer;
+  transition:
+    filter var(--transicao),
+    transform var(--transicao);
+}
+
+.botao-principal:hover {
+  filter: brightness(1.1);
+}
+
+.botao-principal:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Links ---------- */
+.acesso__bloco p a {
+  font-family: var(--fonte-texto);
+  color: var(--cor-link);
+  text-decoration: underline;
+  transition: opacity var(--transicao);
+}
+
+.acesso__bloco p a:hover {
+  opacity: 0.8;
+}
+
+/* ---------- Separador "Ou" ---------- */
+.acesso__bloco > .separador {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 2.5rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cor-icones);
+}
+
+.separador::before,
+.separador::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--cor-borda);
+}
+
+/* ---------- Botão Google ---------- */
+.botao-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 2.5rem;
+  font-family: var(--fonte-texto);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 5rem;
+  cursor: pointer;
+  transition:
+    background-color var(--transicao),
+    border-color var(--transicao);
+}
+
+.botao-google::after {
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23FBBC05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+.botao-google:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: var(--cor-link);
+}
+
+/* ---------- Aviso de email enviado ---------- */
+.aviso-enviado {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 1rem;
+  text-align: left;
+}
+
+.aviso-enviado h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.aviso-enviado p {
+  font-size: 0.8rem;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 768px) {
+  .acesso__ilustracao {
+    display: none;
+  }
+
+  .acesso__formularios {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 1.5rem;
+  }
+}

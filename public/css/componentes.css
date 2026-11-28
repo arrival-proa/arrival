@@ -836,6 +836,601 @@
   background-repeat: no-repeat;
 }
 
+.acesso--invertido .acesso__ilustracao  {
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acesso--invertido .acesso__formularios {
+  width: 50%;
+  background-color: var(--cor-secundaria);
+  border-radius: 3rem 0 0 3rem;
+  padding: 3rem;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.acesso--invertido .acesso__ilustracao img {
+  width: 65%;
+  max-width: 28rem;
+  height: auto;
+}
+
+.acesso--invertido .acesso__bloco {
+  width: 100%;
+  max-width: 33rem;
+}
+
+.acesso--invertido .acesso__simbolo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.acesso--invertido .acesso__simbolo img {
+  width: 4.5rem;
+  height: auto;
+}
+
+.acesso--invertido .acesso__bloco h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.acesso--invertido .formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.acesso--invertido .formulario__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.acesso--invertido .formulario__campo label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.acesso--invertido .formulario__campo input {
+  width: 100%;
+  height: 4rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 1.5rem;
+  box-shadow: none;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: inherit;
+}
+
+.acesso--invertido .formulario__campo input::placeholder {
+  color: #b5b2c0;
+  opacity: 1;
+}
+
+.acesso--invertido .formulario__campo input:focus {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.125rem;
+}
+
+.acesso--invertido .formulario__campo--senha {
+  position: relative;
+}
+
+.acesso--invertido .formulario__campo--senha label {
+  line-height: 1.5rem;
+}
+
+.acesso--invertido .formulario__campo--senha input {
+  padding-right: 3.5rem;
+}
+
+.acesso--invertido .mostrar-senha {
+  position: absolute;
+  top: 4rem;
+  right: 1.25rem;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.acesso--invertido .mostrar-senha::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-color: #9690ad;
+  mask: url('../assets/icones/mostrar-senha.svg') center / contain no-repeat;
+
+  opacity: 0.6;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
+}
+
+.acesso--invertido .mostrar-senha:hover::before,
+.acesso--invertido .mostrar-senha[aria-pressed='true']::before {
+  background-color: #a28cf8;
+  opacity: 1;
+}
+
+.acesso--invertido .mostrar-senha:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.25rem;
+}
+
+.acesso--invertido .formulario__dica {
+  font-size: 0.75rem;
+  color: #9690ad;
+}
+
+.acesso--invertido .formulario__aceite {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.acesso--invertido .formulario__aceite input {
+  appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 0.3125rem;
+  box-shadow: none;
+  cursor: pointer;
+
+  display: grid;
+  place-content: center;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.acesso--invertido .formulario__aceite input:hover {
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked {
+  background-color: #a28cf8;
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked::before {
+  content: '';
+  width: 0.3125rem;
+  height: 0.5625rem;
+  border: solid #1c192b;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: rotate(45deg);
+}
+
+.acesso--invertido .formulario__aceite input:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.1875rem;
+}
+
+.acesso--invertido .formulario__aceite {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.acesso--invertido .formulario__aceite input {
+  appearance: none;
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 0.3125rem;
+  box-shadow: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.acesso--invertido .formulario__aceite input:hover {
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked {
+  background-color: #a28cf8;
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .formulario__aceite input:checked::before {
+  content: '';
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  width: 0.3125rem;
+  height: 0.5625rem;
+  box-sizing: border-box;
+
+  border: solid #1c192b;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.acesso--invertido .formulario__aceite input:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.1875rem;
+}
+
+.acesso--invertido .formulario__aceite label {
+  flex: 1;
+  color: #dfdbea;
+  cursor: pointer;
+}
+
+.acesso--invertido .botao-termos {
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #a28cf8;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.acesso--invertido button {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.acesso--invertido .botao-principal {
+  width: 100%;
+  height: 4rem;
+  padding: 0 1.25rem;
+
+  background: linear-gradient(90deg, #a28cf8, #694bd8);
+  border: none;
+  border-radius: 2rem;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f4f0fa;
+
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.acesso--invertido .botao-principal:hover {
+  filter: brightness(1.1);
+}
+
+.acesso--invertido .botao-principal:active {
+  filter: brightness(0.95);
+}
+
+.acesso--invertido .botao-principal:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.25rem;
+}
+
+/* Links de acesso */
+
+.acesso--invertido .acesso__bloco > p:not(.separador) {
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.acesso--invertido .acesso__bloco > p a {
+  color: #a28cf8;
+  text-decoration: underline;
+}
+
+/* Separador */
+
+.acesso--invertido .separador {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+
+  font-size: 0.875rem;
+  color: #9690ad;
+}
+
+.acesso--invertido .separador::before,
+.acesso--invertido .separador::after {
+  content: '';
+  flex: 1;
+  height: 0.0625rem;
+  background-color: #9690ad;
+}
+
+/* Botão Google */
+
+.acesso--invertido .botao-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+
+  width: 100%;
+  height: 4rem;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  border: 0.0625rem solid #9690ad;
+  border-radius: 1.5rem;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: inherit;
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.acesso--invertido .botao-google::after {
+  content: '';
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background: url('../assets/icones/google.svg') center / contain no-repeat;
+}
+
+.acesso--invertido .botao-google:hover {
+  background-color: rgba(162, 140, 248, 0.08);
+  border-color: #a28cf8;
+}
+
+.acesso--invertido .botao-google:focus-visible {
+  outline: 0.125rem solid #a28cf8;
+  outline-offset: 0.25rem;
+}
+
+/* ==================== CADASTRO MOBILE ==================== */
+
+@media (max-width: 48rem) {
+  .acesso--invertido {
+    background-image: none;
+    background-color: var(--cor-secundaria);
+  }
+
+  .acesso--invertido .acesso__ilustracao {
+    display: none;
+  }
+
+  .acesso--invertido .acesso__formularios {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .acesso--invertido .acesso__bloco {
+    width: 100%;
+    max-width: 25rem;
+  }
+
+  .acesso--invertido .acesso__simbolo {
+    width: 9rem;
+    height: 2.5rem;
+    margin-bottom: 1.25rem;
+
+    background: url('../assets/img/arrival-gradient.svg') center / contain no-repeat;
+  }
+
+  .acesso--invertido .acesso__simbolo img {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .acesso--invertido .acesso__bloco h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .acesso--invertido .formulario {
+    gap: 1.25rem;
+  }
+
+  .acesso--invertido .formulario__campo input {
+    height: 3.5rem;
+    border-radius: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .acesso--invertido .formulario__campo--senha {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 3.5rem auto;
+    gap: 0.5rem;
+  }
+
+  .acesso--invertido .formulario__campo--senha label {
+    grid-area: 1 / 1;
+  }
+
+  .acesso--invertido .formulario__campo--senha input {
+    grid-area: 2 / 1;
+    padding-right: 3.5rem;
+  }
+
+  .acesso--invertido .mostrar-senha {
+    grid-area: 2 / 1;
+    position: relative;
+    inset: auto;
+    transform: none;
+    align-self: center;
+    justify-self: end;
+    margin-right: 1rem;
+    z-index: 1;
+  }
+
+  .acesso--invertido .formulario__dica {
+    grid-area: 3 / 1;
+  }
+
+  .acesso--invertido .formulario__aceite {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .acesso--invertido .formulario__aceite label {
+    min-width: 0;
+    line-height: 1.5;
+  }
+
+  .acesso--invertido .botao-termos {
+    white-space: nowrap;
+  }
+
+  .acesso--invertido .botao-principal,
+  .acesso--invertido .botao-google {
+    height: 3.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .acesso--invertido .botao-google {
+    gap: 0.75rem;
+  }
+
+  .acesso--invertido .botao-google::after {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .acesso--invertido .separador {
+    margin: 1.25rem 0;
+  }
+}
+
+/* ==================== CADASTRO - MODO CLARO ==================== */
+
+[data-tema='claro'] .acesso--invertido {
+  background-image: url('../assets/img/background-light-desktop.png');
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__campo input {
+  border-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__campo input::placeholder {
+  color: var(--cor-placeholder);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__dica {
+  color: var(--cor-placeholder);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha::before {
+  background-color: var(--cor-icones);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha:hover::before,
+[data-tema='claro'] .acesso--invertido .mostrar-senha[aria-pressed='true']::before {
+  background-color: var(--cor-link);
+}
+
+[data-tema='claro'] .acesso--invertido a,
+[data-tema='claro'] .acesso--invertido .botao-termos {
+  color: var(--cor-link);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__aceite label {
+  color: var(--cor-texto);
+}
+
+[data-tema='claro'] .acesso--invertido .formulario__aceite input {
+  border-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .mostrar-senha::before {
+  opacity: 1;
+}
+
+[data-tema='claro'] .acesso--invertido .separador {
+  color: var(--cor-icones);
+}
+
+[data-tema='claro'] .acesso--invertido .separador::before,
+[data-tema='claro'] .acesso--invertido .separador::after {
+  background-color: var(--cor-borda);
+}
+
+[data-tema='claro'] .acesso--invertido .botao-google {
+  border-color: var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+[data-tema='claro'] .acesso--invertido .acesso__bloco p a {
+  color: var(--cor-link);
+}
+
+/* ==================== PÁGINA DE CADASTRO ==================== */
+
+.acesso--invertido {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+
+  background-image: url('../assets/img/background-dark-desktop.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .acesso--invertido .acesso__ilustracao {
   width: 50%;
 
